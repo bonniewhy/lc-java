@@ -1,0 +1,14 @@
+NOTES ---
+
+JAVA DEVELOPMENT KIT --
+    -- Java Runtime Environment (JRE)
+        -- Includes the code behind all the variable types and built-in functions
+        -- Includes a Java Virtual Machine (JVM), which allows Java code to run on any platform.
+
+    -- Java Compiler (javac)
+        -- A compiler is a special type of program that translates programming language code into code that a computer can execute.
+        -- First step to translating our code into "machine code".
+
+    -- Built-In Java Virtual Machine (JVM)
+        -- Makes it so that you can use it on ANY device / OS.
+
