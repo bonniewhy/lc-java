@@ -12,6 +12,8 @@ JAVA DEVELOPMENT KIT --
     -- Built-In Java Virtual Machine (JVM)
         -- Makes it so that you can use it on ANY device / OS.
 
+_______________________________________________________________________________________________________
+
 JAVA FOR PYTHON PROGRAMMERS ---
 
 INTRODUCTION --
@@ -128,6 +130,201 @@ LINES 4 & 5 --
     -- They simply close the two blocks out.
     -- The "outer" block is the class definition.
     -- The "inner" block is the function definition.
+
+_______________________________________________________________________________________________________
+
+DATA TYPES --
+
+STATIC vs. DYNAMIC TYPING --
+    -- Python is "dynamically typed" which means a variable or parameter can refer to any kind of value at any time. When the variable is used, the interpreter figures out what type it is and behaves accordingly.
+    -- Java is "statically typed" which means the association between a variable or parameter and the type of value it can refer to is determined when the variable or parameter is declared. Once the declaration is made, it is illegal for it to refer to a value of any other type.
+
+    -- WE MUST DECLARE THE TYPE OF EVERY VARIABLE AND PARAMETER. This is done by preceding the variable or parameter name with the name of its type. EX: String x = "dog"
+
+    NOTE -- This only needs to be done on declaration. Subsequent usage does not require specifying the type and will result in an error.
+
+    DYNAMIC -- Python, Ruby, Javascript, PHP (AKA everything you're used to. Haha.)
+    STATIC -- Java, C, C++, C#, Ada
+
+STRING --
+    -- Strings in Java and Python are both "immutable".
+    -- Java does not support an indexing or slicing operator. You can still do this, it's just with "method calls" instead of operators.
+    -- Java does not support operator overloading.
+
+PRIMITIVES --
+    -- All of the basic data types in Python are "objects"
+    -- In Java, that is not the case. Some of the most basic data types (like int, float) are not objects.
+    -- The benefit of having these "primitive" data types be non-objects is that operations on the primitives are fast.
+    -- It's difficult for programmers to combine objects and non-objects, so Java has evolved and now all of the non-object primitives have objectified versions called "wrapper classes".
+
+        -- int: Integer -- ex: -5, 1024
+        -- float: Float -- ex: 1.212, 3.14
+        -- double: Double -- ex: 3.14159, 2.0
+            -- Doubles are twice as precises (ie. can hold much longer decimal numbers) than floats
+        -- char: Char -- ex: 'a', '!'
+            -- A single Unicode character. Must be enclosed in single quotes '' to be a character; double-quotes "" indicate a string
+        -- boolean: Boolean -- ex: true, false
+            -- Note that booleans in Java are not capitalized as they are in Python.
+
+        These aren't all of the primitive types, only the most commonly used ones that beginners are likely to encounter.
+
+AUTOBOXING --
+    -- In older versions of Java, it was the programmer's responsibility to conver back and forth from a primitive to an object.
+    -- The process of converting a primitive to an object is called "boxing".
+    -- The reverse process is called "unboxing".
+    -- In Java 5, the compiler became smart enough to know when to convert back and forth, which is known as "autoboxing". In many situations, you can use primitive and object types interchangeably.
+
+    -- IT'S BEST PRACTICE to use primitives whenever possible. The primary exception to this occurs when storing values in collections.
+
+TEMP CONVERSION PROGRAM --
+
+PYTHON --
+    def main():
+        fahrenheit = int(input("Enter the temperature in F: "))
+        celsius = (fahrenheit - 32) * (5.0 / 9.0)
+        print("The temperature in C is: ", celsius)
+
+    if __name__ == "__main__":
+        main()
+
+JAVA --
+    import java.util.Scanner;
+
+    public class TempConv {
+        public static void main(String[] args) {
+            double fahrenheit;
+            double celsius;
+            Scanner in;
+
+            in = new Scanner(System.in);
+            System.out.println("Enter the temperature in F: ");
+            fahrenheit = in.nextDouble();
+
+            celsius = (fahrenheit - 32) * 5.0/9.0;
+            System.out.println("The temperature in C is: " + celsius);
+        }
+    }
+
+"import" --
+    -- In Java, you can use any class that is available without having to import the class, but you must adhere to two very important conditions:
+        -- 1. The "javac" and "java" commands must know that the class exists.
+        -- 2. You must use the full name of the class.
+
+    -- How do the command know that certain classes exist?
+        -- 1. Java knows about all the classes that are defined in ".java" and ".class" files in your current working directory.
+        -- 2. Java knows about al lthe classes that are shipped with java.
+        -- 3. Java knows about all the classes that are included in your "CLASSPATH" environment variable. "CLASSPATH" can name two kinds of structures:
+            -- A jar file that contains java classes. (A jar file is a "Java archive", and ends in ".jar". For now, think of it as a .zip file that contains a bunch of classes.)
+            -- Another Unix directory that contains Java class files.
+
+    -- You can think of the "import" statment as being similar to the Python "from module import xxx", but behind the scense the two statements actually do different things.
+        -- The class name in Java is very hierarchical.
+            -- The full name of the "Scanner" class is actually "java.util.Scanner" The name has two parts:
+                -- The first part "java.util" is called the package.
+                -- The last part is the class.
+        -- It is the Java class loader's responsibility to load classes into memory, not the "import" statement's.
+
+    -- The "import" statement tells the compiler that we are going to use a shortened version of the class's name.
+
+DECLARING VARIABLES; "double fahrenheit; double celsius; Scanner in;" --
+    -- This line is saying that fahrenheit and celsius are going to reference objects that are of the type "double". And the variable "in" will reference a Scanner object.
+
+    -- The general rule in Java is that you must decide what kind of an object your variable is going to reference and then you must declare that variable before you use it.
+
+INPUT / OUTPUT and the SCANNER CLASS --
+    -- Scanner objects make getting input from the user, a file, or even over the network relatively easy.
+    -- To ask the user to input something in the command line --
+        -- in = new Scanner(system.in);
+            -- The Scanner object is assigned to the name "in", which we declared to be a Scanner earlier in the program.
+            -- "System.in" is similar to System.out except, of course, it is used for input.
+    -- You can think of a "Scanner" as a kind of "adapter" that makes low level objects easier to use.
+    NOTE: As in Python, you must declare and initialize your variables in the same line.
+
+"farhrenheit = in.nextDouble();" --
+    -- On this line, we use the Scanner object to read in a number.
+    -- We must convert the input to a double.
+    -- "nextDouble()" is a Scanner method.
+
+CLASS TYPES --  
+    -- Any class in Java defines a type.  
+    -- Class and objects are conceptually the same as in Python.
+        -- A class is a template for creating objects.
+
+    -- If I have a class "Cat" with a constructor that takes no arguments, I can declare and create a new instance of Cat using its constructor.
+        PYTHON:
+            my_cat = Cat()
+
+        JAVA:
+            Cat myCat = new Cat();
+
+        Each of these statements creates a new variable that is initialized to hold a new "Cat" object. In Java, we must declare the variable's type and we precede the constructor with the "new" keyword.
+
+    -- Variables and parameters that are of the type of a class are said to be of "reference type" as opposed to "primitive type".
+
+REFERENCES --
+    -- A variable of a reference type (such as "myCat" above) does not actually store the object in quest. It just stores a "reference" to the object.
+    -- When we assign a value to a reference type, as in "Cat sameCat = myCat", we are not creating a second copy of the object, but instead are creating a second "arrow" point to the same object.
+
+ARRAYS --
+    -- An array is an ordered, fixed-size collection of elements.
+    -- Arrays may only store one type of object. (Unlike Python, we cannot have an array with both strings and integers.)
+    -- Syntax for creating an array capable of holding 10 integers:
+        int[] someInts = new int[10]
+        or
+        int[] someOtherInts = {1, 1, 2, 3, 5, 8}
+
+        To create an array holding a different size, replace the number 10 with a different number.
+        To create an array holding a different type, replace "int" on both sides of the argument with the desired type.
+        Unlike Python, arrays in Java cannot change size once created.
+        Literal expressions must be placed in curly braces.
+
+        To access array elements, we use square brackets as with Python lists. And it's also zero-based indexing.
+
+STATIC METHODS --
+    -- In pure object-oriented languages like Java and C#, we don't have functions in the sense you're used to. For example, functions may not be declared outside of a class. Within the context of a class, functions are referred to as "methods".
+    -- You are encouraged not to refer to methods as "functions" when you are talking about Java code.
+
+    -- "static methods" behave similarly to functions as you knew them in Python.
+    -- A static methods i one with the "static" keyword, as our "main" method has above.
+
+    WARNING: Until we get into Object Oriented Programming, every method we write will have the "static" keyword. Leaving off "static" will prevent you from calling methods you define as you would like to.
+
+    TWO CLASSES --
+
+        public class HelloMethods {
+
+            public static void main(String[] args) {
+                String message = Message.getMessage("fr");
+                System.out.println(message);
+            }
+        }
+
+        public class Message {
+
+            public static String getMessage(String lang) {
+
+                if (lang.equals("sp")) {
+                    return "Hola Mundo!";
+                }
+                else if (lang.equals("fr")) {
+                    return "Bonjour le monde";
+                }
+                else {
+                    return "Hello, World!";
+                }
+            }
+        }
+
+    WARNING: It is a rule in Java that a file containing a class marked "public" MUST be named the same as that class.
+
+    -- "Message" class does not have a "main" method, so it cannot be run on its own. Code within the "Message" class must be called from elsewhere in order to execute.
+
+    -- Since Java is statically typed, each method must declare its return type -- that is, the data type of what it will return -- along with the type of each parameter.
+
+    -- To call a static method, we must use the name of the class in which it is defined, followed by ".", followed by the name of the method. EX: Message.getMessage("fr");
+
+    -- We are able to call this method from another class because it is declare to be "public". If we wanted to restrict the method from being called by another class, we could instead use the "private" modifier.
+_______________________________________________________________________________________________________
             
 CLASS NOTES ---
 
