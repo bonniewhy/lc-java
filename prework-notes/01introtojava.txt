@@ -33,13 +33,107 @@ JAVA RULES --
     -- Every Java program must have a function (or method) called "main" that has a signature of "public static void main(String[] args)"
         -- A "method signature" specifies all of the information necessary for a programmer to use the method, including, at minimum, its name and the number, types, and order of its parameters. It can also include access and static modifiers.
 
-        
+public class Hello {
+    public static void main(String[] args) {
+        System.out.println("Hello, World!");
+    }
+}
 
+LINE 1 --
+    -- The first word "public" indicates to the Java compiler that this is a method that anyone can call.
+        -- Java enforces several levels of security on the methods we write:
+            -- public
+            -- protected
+            -- private
+
+    -- The "class" keyword indicates that we are defining a class, while "Hello" is the name of the class. That is up to the programmer, and can be anything that fits within some basic rules.
+
+    -- JAVA NAMING CONVENTIONS
+        -- Package
+            -- All lowercase
+            -- ex. demos.java4python // org.launchcode.utilities
+        -- Class
+            -- Start with an uppercase letter
+            -- ex. Scanner // System // Hello
+        -- Method
+            -- Start with a lower case letter, and use camelCase to represent multiword method names
+            -- ex. nextInt() // getId()
+        -- Instance variable
+            -- Start with a lowercase letter and use camelCase
+            -- ex. id // firstName
+        -- Constant*
+            -- All uppercase letters, words separated by underscores
+            -- ex. MAX_INT
+            -- Constants in Java are variables created using both "static" and "final" modifiers. ex: static final Double PI = 3.14159;
+
+    -- JAVA NAMING RULES
+        -- Only use letters, numbers, and the underscore character.
+        -- They should always start with a letter.
+
+    -- Java programs must be inside a class. The "Hello" class is not a very useful class since it has no instance variables and only one method. It is created out of necessity.
+
+    -- Classes are enclosed in { and }.
+        -- They also are used to surround conditionals, methods, and loops.
+        -- Any section of code enclosed in a pair of such braces is referred to a "block".
+
+LINE 2 --
+    -- Start the "method definition"
+    -- Indentation is not required. Similar to HTML, it's just for human readability and consistency.
+    -- Java knows this is part of the "Hello" class because it is enclosed in the curly braces.
+
+    -- "public"
+        -- Similar to the use in line 1, this indicates to the Java compiler that this is a method that anyone can call.
+
+    -- "static"
+        -- Tells Java that this is a method that is part of the class, but does not belong to any one instance of the class.
+            -- Shared by all instances of the class.
+            -- A class is a "blueprint" for a type of object, and when we create an object based on a class, we refer to that object as an "instance" of the class (or just "instance")
+        -- In Python, the kind of methods we typically wrote required an instance in order for the method to be called.
+        -- With a static method, the object to the left of the "." is a class, not an instance of the class.
+        -- For now, you can think of static methods the same way you think of methods in Python modules that don't require an instance.
+
+    -- "void"
+        -- Tells the Java compiler that the method "main" will not return a value.
+        -- This is roughly analogous to omitting the return statement in a Python method.
+        -- Every Java function must tell the compiler what kind of an object it will return. A.K.A. Everything in Java must have a "type".
+        -- The special type called "void" which means nothing will be returned.
+
+    -- "main"
+        -- We have the proper name for the method: "main"
+        -- The rules for names in Java are similar to the rules in Python
+
+    -- String[] args
+        -- Parameter list.
+        -- In this example, we have one parameter, named "args".
+        -- We also have to tell the compiler that the value of "args" is an array of strings.
+            -- For the moment, you can just think of an array as being the same as a list in Python.
+        -- The practical benefit of declaring that the method "main" must accept one parameter and the parameter must be an array of strings.
+            -- If you call "main" somewhere else in your code and pass it an array of integers or even a single string, the compiler will flag it as an error.
+        -- That doesn't happen in Python because you don't have to declare a type to the variables. And such.
+
+LINE 3 --
+    -- "System.out.println("Hello, World!);"
+        -- Python and Java both use dot notation for finding names.
+        -- "System" is a class.
+        -- In the "System" class, we find the object named "out".
+        -- The "out" object is the standard output stream for this program (typically, the command prompt.)
+        -- Having located the "out" object, Java will now call the method named "println(String s)" on that object.
+        -- The "println" method prints a string and adds a newline character at the end.
+    
+    -- "semi-colon"
+        -- ";" signifies the end of a statement.
+        -- Unlike Python, Java statements can span across many lines. The compiler only knows its the end of a statment when it gets to the semi-colon.
+    
+LINES 4 & 5 --
+    -- They simply close the two blocks out.
+    -- The "outer" block is the class definition.
+    -- The "inner" block is the function definition.
+            
 CLASS NOTES ---
 
 public class Hello {
     public static void main(String[] args) {
-        System.out.printIn("Hello, World!");
+        System.out.println("Hello, World!");
     }
 }
 
@@ -63,7 +157,7 @@ public class Hello {
 
 -- Third line
     -- System.out -- This defines that the output will go to the console or standard output.
-    -- PrintIN -- Prints a line with a carriage return (new line)
+    -- Println -- Prints a line with a carriage return (new line)
     -- All String literals must be in double quotes, unlike Python (" ")
     -- All lines must end with a semi colon.
     -- JAVA IS NOT SPACE SENSITIVE LIKE PYTHON.
