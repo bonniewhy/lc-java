@@ -1,0 +1,561 @@
+NOTES ---
+
+CONDITIONALS ---
+    -- Very similar to Python:
+        PYTHON SYNTAX
+            if condition:
+                statement 1
+                statement 2
+                ...
+
+        JAVA SYNTAX
+            if (condition) {
+                statement 1
+                statement 2
+                ...
+            }
+
+    -- The parentheses around the condition are required.
+
+IF-ELSE ---
+    -- Adding an else clause:
+        PYTHON SYNTAX
+            if condition:
+                statement 1
+                statement 2
+                ...
+            else:
+                statement 1
+                statement 2
+                ...
+
+        JAVA SYNTAX
+            if (condition) {
+                statement 1
+                statement 2
+                ...
+            } else {
+                statement 1
+                statement 2
+                ...
+            }
+
+ELIF / ELSE-IF ---
+    -- Java is a little different than Python here:
+        PYTHON SYNTAX
+            grade = int(input('Enter a grade'))
+            if grade < 60:
+                print 'F'
+            elif grade < 70:
+                print 'D'
+            elif grade < 80:
+                print 'C'
+            elif grade < 90:
+                print 'B'
+            else:
+                print 'A'
+
+        JAVA SYNTAX
+            import java.util.Scanner
+            public class ElseIf {
+                public static void main(String[] args) {
+                    Scanner in = new Scanner(System.in);
+                    System.out.println('Enter a grade');
+                    int grade = in.nextInt();
+                    if (grade < 60) {
+                        System.out.println('F');
+                    } else if (grade < 70) {
+                        System.out.println('D');
+                    } else if (grade < 80) {
+                        System.out.println('C');
+                    } else if (grade < 90) {
+                        System.out.println('B');
+                    } else {
+                        System.out.println('A');
+                    }
+                }
+            }
+
+SWITCH ---
+    -- "switch" statement acts something like the Python "elif" statement under certain conditions.
+    -- The "switch" statement is not used very often, and is generally recommended to avoid.
+    -- It's not as powerful as the "else if" model because the switch variable can only be compared for equality with a very small class of types.
+
+    ex:
+        import java.util.Scanner;
+
+        public class DayPrinter {
+            public static void main(String[] args) {
+                Scanner in = new Scanner(System.in);
+                System.out.println("Enter an integer: ");
+                int dayNum = in.nextInt();
+
+                String day;
+                switch (dayNum) {
+                    case 0:
+                        day = "Sunday";
+                        break;
+                    case 1:
+                        day = "Monday";
+                        break;
+                    case 2:
+                        day = "Tuesday";
+                        break;
+                    case 3:
+                        day = "Wednesday";
+                        break;
+                    case 4:
+                        day = "Thursday";
+                        break;
+                    case 5:
+                        day = "Friday";
+                        break;
+                    case 6:
+                        day = "Saturday";
+                        break;
+                    case 7:
+                        day = "Sunday";
+                        break;
+                    default:
+                        // in this example, this block runs if none of the above blocks match
+                        day = "Int does not correspond to a day of the week";
+                    }
+                    System.out.println(day);
+                }
+            }
+
+    -- If "break" statements are omitted on accident, a behavior known as "fallthrough" is carried out.
+    -- EX: In the above example, if the "breaks" are gone, even if the user enters in a "4", "Int does not correspond to a day of the week" would be printed because once it hits the 4, it'll still continue to execute and switch to "default" at the end.
+        -- Also, if we put break on case 6, "Saturday" would be printed...
+    -- Break makes it so that it breaks out of all of the other cases and moves on to the next block of code.
+
+ITERATION
+    -- Conceptually, loops in Java aren't that much different than Python. The syntax, however, varies significantly.
+
+FOR LOOPS --
+    -- Easiest way to write a for loop in Python is with a range function:
+        PYTHON:
+            for i in range(10):
+                print i
+            
+        JAVA:
+            for (int i = 0; i < 10; i++ ) {
+                System.out.println(i);
+            }
+
+            NOTE: ++ is an increment operator. -- is a decrement operator.
+
+    -- Range function provides you with a wide variety of options for controlling the value of the loop variable.
+
+        PYTHON:
+            range(stop)
+            range(start, stop)
+            range(start, stop, step)
+
+            ex:
+                for in in range(100, -1, -5):
+                    print i
+  
+    -- In Java, the "for" loop is analogous to the last option above, giving you explicit control over the starting, stopping, and stepping in the three clauses inside the parentheses.
+
+        JAVA:
+            for (start clause; stop clause; step clause) {
+                    statement 1
+                    statement 2
+                    ...
+            }
+
+            ex:
+                for (int i = 100; i >= 0; i -= 5) {
+                    System.out.println(i);
+                }
+
+    -- We can also iterate over a list:
+        PYTHON:
+            k = [1, 1, 2, 3, 5, 8, 13, 21]
+            for i in k:
+                print i
+
+        JAVA:
+            int k[] = {1, 1, 2, 3, 5, 8, 13, 21};
+            for(int i : k) {
+                System.out.println(i);
+            }
+
+            ex: for iterating through a string where we can conver the string to an array of characters
+            String msg = "Hello World";
+            for (char c : msg.toCharArray()) {
+                System.out.println(c);
+            }
+
+WHILE LOOPS ---
+    -- Both Python and Java support the "while" loop, or indefinite loop.
+        PYTHON:
+            while condition:
+                statement 1
+                statement 2
+                ...
+
+        JAVA:
+            while (condition) {
+                statement 1
+                statement 2
+                ...
+            }
+
+        -- Java also has a "do-while" loop:
+            do {
+                statement 1
+                statement 2
+                ...
+            } while (condition);
+
+            -- Very similar to the while loop, except that the condition is evaluated at the end of the loop rather than the beginning. This ensures that a loop will be executed at least one time. Some programmers prefer this loop in some situations because it avoids an additional assignment prior to the loop.
+
+BREAK AND CONTINUE STATEMENTS ---
+    -- "break" statement is used in instances wher eyou may want to terminate a loop if a given condition is met. EX: If you want to loop through an array of integers searching for a given integer and you want to quit the loop once that number is found:
+        
+        public class testBreak {
+                
+            public static void main(String[] args) {
+                int[] someInts = {1, 10, 2, 3, 5, 8, 10};
+                int searchTerm = 10;
+                for(int oneInt : someInts) {
+                    if (oneInt == searchTerm) {
+                        System.out.println("Found it!");
+                        break;
+                    }
+                }
+            }
+        }
+        
+        -- Instad of the "for" loop iterating through all the integers in the array, it will stop after it finds the first matching instance. Once it finds the first 10, it'll print "Found it!" and quit the loop. Without the break, it'd print a second "Found it!" when it found the second 10 in the array.
+
+        -- The "break" statement will only break the loop it's in, so if you have a nested loop, it will not break the outer loop if it's in the inner loop.
+
+    -- "continue" statement is similar to, but importantly different from, "break". It interrupts the normal flow of control of the loop, but only terminates the "current iteration" of the loop. So, the loop will continue to run from the top (as long as the boolean expression that controls the loop is still true) after a continue statment.
+        EX:
+
+        public class testContinue {
+
+            public static void main(String[] args) {
+                int[] someInts = {1, 10, 2, 3, 5, 8, 10};
+                int searchTerm = 10;
+                for(int oneInt : someInts) {
+                    if (oneInt == searchTerm) {
+                        System.out.println("Found it!");
+                        continue;
+                    }
+                    System.out.println("Not here");
+                }
+            }
+        }
+
+        The above program will return this:
+        
+            Not here
+            Found it!
+            Not here
+            Not here
+            Not here
+            Not here
+            Found it!
+
+        because the continue statment, the final print statment in the for loop is skipped. If it wansn't there, it'd print out another "Not here" at the end. (Not quite sure why, but okay! Hahah)
+
+DATA STRUCTURES AND COLLECTIONS --
+
+    -- A "data structure" is a programming construct that allows you to aggregate lots of values into one value. AKA Let's us hold on to lots of data in a single place. PYTHON: lists, dictionaries, and tuples.
+
+ORDERED DATA: LISTS AND ARRAYS --
+    PYTHON (LIST VERSION) --
+
+        def main():
+
+            students = []
+
+            # Use a space to allow for the while check below.
+            newStudent = " "
+
+            print("Enter your students (or ENTER to finish):")
+
+            # Get student names
+            while (newStudent != ""):
+
+                newStudent = input()
+
+                if newStudent != "":
+                    students.append(newStudent)
+
+            # Get student grades
+            grades = [0]*len(students)
+            for idx, student in enumerate(students):
+                newGrade = float(input("Grade for " + student + ": "))
+                grades[idx] = newGrade
+
+            # Print class roster
+            print("\nClass roster:")
+            for idx, student in enumerate(students):
+                print(student + " (" + str(grades[idx]) + ")")
+
+            avg = sum(grades) / len(grades)
+            print("\nAverage grade: " + str(avg))
+
+        if __name__ == "__main__":
+            main()
+
+        RETURNS:
+
+            Enter your students (or ENTER to finish):
+            Chris
+            Jesse
+            Sally
+
+            Grade for Chris: 3.0
+            Grade for Jesse: 4.0
+            Grade for Sally: 3.5
+
+            Class roster:
+            Chris (3.0)
+            Jesse (4.0)
+            Sally (3.5)
+
+            Average grade: 3.5
+
+    JAVA (ARRAYLIST VERSION) --
+
+        package org.launchcode.java.demos.java4python;
+
+        import java.util.ArrayList;
+        import java.util.Scanner;
+
+        public class Gradebook {
+
+            public static void main(String[] args) {
+
+                ArrayList<String> students = new ArrayList<>();
+                ArrayList<Double> grades = new ArrayList<>();
+                Scanner in = new Scanner(System.in);
+                String newStudent;
+
+                System.out.println("Enter your students (or ENTER to finish):");
+
+                // Get student names
+                do {
+                    newStudent = in.nextLine();
+
+                    if (!newStudent.equals("")) {
+                        students.add(newStudent);
+                    }
+
+                } while (!newStudent.equals(""));
+
+                // Get student grades
+                for (String student : students) {
+                    System.out.println("Grade for" + student + ": ");
+                    Double grade = in.nextDouble();
+                    grades.add(grade);
+                }
+
+                // Print class roster
+                System.out.println("\nClass roster:");
+                double sum = 0.0;
+
+                for (int i = 0; i < students.size(); i++) {
+                    System.out.println(students.get(i) + " (" + grades.get(i) + ")");
+                    sum += grades.get(i);
+                }
+
+                double avg = sum / students.size();
+                System.out.println("Average grade: " + avg);
+            }
+        }
+
+    -- First, we initialize two objects, students and grades, which appears to of type ArrayList<String> and ArrayList<Double> respectively.
+    -- An ArrayList in Java is very similar to a list in Python, with one important difference: lists can contain any type of value in Python, but in Java we must let the compiler know what kind of objects our list is going to contain.
+    -- NOTE: All values stored in Java collections must be objects (there for not "primitives"), so we'll have to use wrapper classes in those situations.
+    -- We then initialize each list by creating a new, empty list when we call the ArrayList constructor as in new ArrayList<>(). We don't need to specify type as it's implicit in the left side of the argument.)
+        -- NOTE: You will sometimes see ArrayList<E>, where "E" represents a placeholder for the type that a programmer will declare a given list to hold. You can think of "E" as representing an arbitrary type. Classes like ArrayList<E> that take another type or class as a parameter arereferred to as "generic classes" or "generic types".
+
+    -- Since we use a do-while loop, the user has to press enter to move to the next block.
+    -- Then we use the .add() method which is provided by the ArrayList class.
+    -- The first for loop is very similar to Python (for student in students). We must declare the iterator variable "student" in Java, which was not explicitly done in Python.
+    -- The next loop prints out each student's name and grade. In this loop, we use a "loop index", a different style of for loop.
+        -- Also, we introduce students.size() which utilizes the ArrayList's size() method to return the integer representing the number of items in the list.
+        -- The syntax in this loop is not too different from what happens in Python using "range". The syntax for (int i = 0; i < students.size(); i++) is exactly equivalent ot the Python for i in range(len(students)).
+        -- First, initialize the loop index variable (i), second is a Boolean expression that is our exit condition, third is used to increment the value of the loop index vairable at the end of the iteration through the loop.
+    -- Finally, we compute the average grade for all the students.
+
+ARRAY LIST METHODS AND PROPERTIES --
+    -- These will be the most common methods and properties that you will use with this class. They are not the complete list!
+
+        name // description // example
+
+        -- size // represents the number of items in the list, as an "int" // students.size()
+        -- add // adds an item to the list // students.add("Sally")
+        -- contains // checks to see if the list contains a given item, returning a boolean // students.contains("Haley")
+        -- indexOf // looks for an item in a list, returns the index of the first occurrence of the item if exists, returns -1 otherwise // students.indexOf("Zach")
+        -- sort // sorts a list, using the "default" sort comparison // students.sort()
+        -- toArray // returns an array contianing the elements of the list // students.toArray()
+
+    JAVA (ARRAY VERSION) --
+    
+        package org.launchcode.java.demos.java4python;
+
+        import java.util.ArrayList;
+        import java.util.Scanner;
+
+        public class GradebookArray {
+
+            public static void main(String[] args) {
+
+                // Allow for at most 30 students
+                int maxStudents = 30;
+
+                String[] students = new String[maxStudents];
+                double[] grades = new double[maxStudents];
+                Scanner in = new Scanner(System.in);
+
+                String newStudent;
+                int numStudents = 0;
+
+                System.out.println("Enter your students (or ENTER to finish):";
+
+                // Get student names
+                do {
+                    newStudent = in.nextLine();
+
+                    if (!newStudent.equals("")) {
+                        student[numStudents] = newStudent;
+                        newStudents++;
+                    }
+
+                } while(!newStudent.equals(""));
+                
+                // Get student grades
+                for (int i = 0; i < numStudents; i++) {
+                    System.out.println("Grade for " + students[i] + ": ");
+                    double grade = in.nextDouble();
+                    grades[i] = grade;
+                }
+
+                // Print class roster
+                System.out.println("\nClass roster:");
+                double sum = 0.0;
+
+                for (int i = 0; i < numStudents; i++) {
+                    System.out.println(students[i] + " (" + grades[i] + ")");
+                    sum += grades[i];
+                }
+
+                double avg = sum / numStudents;
+                System.out.println("Average grade: " + avg);
+            }
+        }
+
+    -- Arrays are the most basic data structure in C-style languages. Additionally, using an array over an ArrayList might be preferred in some circumstances, primarily for performance reasons (array operations are generally faster than list operations). NOTE: Arrays are of a fixed size!! You cannot expand or contract an array after it is created, so you must know exactly how many elements it will need to hold when you create it.
+
+    -- Up front in the above example, we have to decide how large our arrays "students" and "grades" are going to be. It is adviseable to make the arrays larger than you think they'll need to be.
+    -- Like lists in Python, we can index arrays with integers (students[i]). Unlike lists, there is no analog of .add(), which adds an item to "the end" of a list.
+    -- We must always access and assign array elements using an explicit index, which can make the for code seem littered with array counters and is more difficult to read (not to mention more error-prone).
+
+KEY/VALUE DATA: HASHMAPS --
+    -- Just as Python's dictionary structure, they are called "HashMap"s (or maps, more generally).
+    -- Considering the example we've been using, we can improve our program using a map. The names will be the keys, and the grades will be the values.
+
+    PYTHON (DICTIONARY VERSION) --
+
+    def main():
+        
+        students = {}
+        newStudent = " "
+
+        print("Enter your students (or ENTER to finish):")
+
+        # Get student names
+        while (newStudent != ""):
+
+            newStudent = input("Name: ")
+
+            if newStudent != "":
+                newGrade = float(input("Grade: "))
+                students[newStudent] = newGrade
+
+        # Print class roster
+        print("\nClass roster:")
+        for student in students:
+            print(student + " (" + str(students[student]) + ")")
+
+        avg = sum(students.values()) / len(students)
+        print("\nAverage grade: " + str(avg))
+
+    if __name__ == "__main__":
+        main()
+
+JAVA (HASHMAP VERSION) --
+
+    package org.launchcode.java.demos.java4python;
+
+    import java.util.HashMap;
+    import java.util.Map;
+    import java.util.Scanner;
+
+    public class GradebooksHashMap {
+
+        public static void main(String[] args) {
+
+            HashMap<String, Double> students = new HashMap<>();
+            Scanner in = new Scanner(System.in);
+            String newStudent;
+
+            System.out.println("Enter your students (or ENTER to finish):");
+
+            // Get student names and grades
+            do {
+
+                System.out.println("Student: ");
+                newStudent = in.nextLine();
+
+                if (!newStudent.equals("")) {
+                    System.out.println("Grade: ");
+                    Double newGrade = in.nextDouble();
+                    students.put(newStudent, newGrade);
+
+                    // Read in the newline before looping back
+                    in.nextLine();
+                }
+            } while(!newStudent.equals(""));
+
+            // Print class roster
+            System.out.println("\nClass roster:");
+            double sum = 0.0;
+
+            for (Map.Entry<String, Double> student : students.entrySet()) {
+                System.out.println(student.getKey() + " (" + student.getValue() + ")");
+                sum += student.getValue();
+            }
+
+            double avg = sum / students.size();
+            System.out.println("Average grade: " + avg);
+        }
+    }
+
+    -- We can add a new item with a ".put()" method, specifying both key and value. We don't in this example, but we can access "HashMap" elements by using a "get" method. EX: If we had a key value pair "jesse"/4.0 in the "students" map, we could access the grade with Double jesseGrade = students.get("jesse").
+    -- As with Python, variables may be used to access elements:
+        ex: String name = "jesse";
+        Double jesseGrade = students.get(name);
+
+    -- Looping through a map is slightly more complex than it is for lists. In the above ex:
+        -- The iterator variable, student, is of type Map.Entry<String, Double>. The class Map.Entyr is specifically constructd to be used in this fashion, to represent key/value paris within HashMaps. Each Map.Entry object has a getKey method and a getValue method, which represent (surprisingly enough), the key and value of the map item.
+
+HASHMAP METHODS ---
+    -- Also, not all of the HashMap methods that exist, but here are some common useful ones:
+
+    name // description // example
+
+    size // returns the number of items in the map, as an int // students.size()
+    keySet // returns a collection containing all keys in the map. This collection may be used in a for-each loop just as lists are, but the map MAY NOT BE MODIFIED within such a loop // students.keySet()
+    values // returns a collection containing all values in the map. This collection may be used in a for-each loop just as lists are. // students.values()
+    put // add a key/value pair to a map // students.put("Mark", 3.5)
+    containsKey // returns a boolean indicating whether or not the map contains a given key // students.containsKey("Chris")
+    containsValue // returns a boolean indicating whether or not the map contains a given value // students.containsValue(4.0)
