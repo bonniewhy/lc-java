@@ -559,3 +559,34 @@ HASHMAP METHODS ---
     put // add a key/value pair to a map // students.put("Mark", 3.5)
     containsKey // returns a boolean indicating whether or not the map contains a given key // students.containsKey("Chris")
     containsValue // returns a boolean indicating whether or not the map contains a given value // students.containsValue(4.0)
+
+____________________________________________________________________________
+CLASS NOTES ---
+
+* LOOK UP THE DIFFERENCE BETWEEN STATIC AND NON-STATIC (REGULAR) METHODS...
+
+-- "if" statments can only result in a boolean AKA "if (condition) {" -- "condition" can only be a boolean.
+-- Hank really likes switch statements. So, maybe don't believe everything you hear...
+-- Java doesn't have "range"s like Python does. D:
+-- i+=2 will increment by 2, aka good way to step through even numbers only or whatever.
+-- Loops don't have to increment, and they can also decrement.
+-- "for each" loop is short hand for the above.
+    EX:
+    PYTHON
+        for i in nums:
+
+    JAVA
+        for(int i : nums) {
+            System.out.println(i);
+        }
+
+        NOTE: You're required to provide the type (in this example int) in the for-earch loop.
+
+-- On the continue example, if you don't put that there it'll print both "Found it!" and "Not here" for both of the tens and that's why you get the extra print statements.
+
+COLLECTIONS ---
+Linear data -- lists, queues, stacks, etc.
+Non-linear data -- maps (dictionaries), trees, graphs, etc.
+
+FIGURE OUT HOW TO USE VS CODE AS YOUR IDE!!!!!!!!!
+
