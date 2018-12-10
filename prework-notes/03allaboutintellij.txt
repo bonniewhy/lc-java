@@ -17,4 +17,25 @@ DEBUGGING
 GIT
 -- The base package is, by convention, the URL of your company, but you just do it backwards. eX: org.launchcode
 -- Git Ignore -- Java templates, ".idea" directory, "*.iml" files.
---  
+
+
+SPRING BOOT
+-- One portion of the Spring framework
+-- Spring MVC is a module that allows us to create web apps.
+-- Spring Boot is an extension of Spring MVC
+-- "Convention over configuration"
+    -- When we're going to set up our framework, let's go ahead and put a bunch of default types of behaviours into place so the user doesn't have to do it.
+    -- Provides embedded applications server
+        -- will run our Java apps. (Tom Cat)
+    -- Uses lots of default settings and locations
+    -- Easier configuration (no XML)
+        -- Traditionally Spring applications use XML (looks kinda like HTML)
+        -- We will not have to touch XML because Spring boot allows us to configure applications within the Spring code itself.
+
+ROUTING
+-- Customizing routes with the @RequestMapping annotation
+-- Declaring HTTP request types
+-- Passing parameters:
+    -- Get/query parameters
+    -- Post parameters
+    -- URL segments
