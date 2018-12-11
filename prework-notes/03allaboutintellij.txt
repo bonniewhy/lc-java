@@ -26,7 +26,7 @@ SPRING BOOT
 -- "Convention over configuration"
     -- When we're going to set up our framework, let's go ahead and put a bunch of default types of behaviours into place so the user doesn't have to do it.
     -- Provides embedded applications server
-        -- will run our Java apps. (Tom Cat)
+        -- will run our Java apps. (Tomcat)
     -- Uses lots of default settings and locations
     -- Easier configuration (no XML)
         -- Traditionally Spring applications use XML (looks kinda like HTML)
@@ -39,3 +39,14 @@ ROUTING
     -- Get/query parameters
     -- Post parameters
     -- URL segments
+
+___________________________________________________________________________
+CLASS NOTES ---
+
+-- Add a watch to watch for a given variable. (Hank doesn't use that a whole lot, but yeah. It's there.)
+-- "Convention over configuration" -- follow the popular convention rather than allow for a lot of custom configuration.
+-- GRADLE
+    -- For now all you need to know is that it manages your external dependencies for you, similar to maven, but the "groovy" code instead of XML.
+    -- MAVEN IS REALLY THE INDUSTRY STANDARD, not Gradle... So, learn that, too.
+-- @blahblah is an "annotation" in Java. Decorator in Python.
+-- 

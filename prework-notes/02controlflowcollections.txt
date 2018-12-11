@@ -589,4 +589,50 @@ Linear data -- lists, queues, stacks, etc.
 Non-linear data -- maps (dictionaries), trees, graphs, etc.
 
 FIGURE OUT HOW TO USE VS CODE AS YOUR IDE!!!!!!!!!
+Hank also does not enjoy IntelliJ... He uses Eclipse.
+
+___________________________________________________________________________
+LINEAR DATA STRUCTURES ---
+List -- [0] [1] [2] [3] Basic list of size 4.
+Queue -- [3] [2] [1] [0] FIFO! First in, first out.
+Stack -- [0]
+         [1]
+         [2]
+         [3] LIFO. Last in, first out.
+
+If you want random access, use a list.
+The most common use of a stack is calling methods --
+
+EX:
+    Function1 () {
+        Function2 ();
+    }
+
+    Function2 () {
+        Function3 ();
+    }
+
+    Function3 () {
+        return 1;
+    }
+
+    CALL STACK --
+    Function1 calls Function2
+    But Function2 calls Function3
+
+    So here's what your stack looks like:
+    Function3
+    Function2
+    Function1
+
+    When you return out of a function, it pops off the stack. So, once your return from 3, Function 2 will be on top. Then once that one is done, then Function 1 can finally run.
+
+LinkedList -- [ ] [ ] --> [ ] [ ] --> [  ]
+        stores data, pointer, linked list, null (indicates you're at the end of the linked list)
+
+    Pros of this is that you can modify / delete data easier in linked lists. And computationally faster.
+
+These are the four main linear data structures we will most likely be using. Please look up more information on all of this...
+
+
 
