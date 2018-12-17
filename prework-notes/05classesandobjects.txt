@@ -1,0 +1,261 @@
+NOTES ---
+
+-- Three Pillars of Object-Oriented Programming: polymorphism, inheritance, and encapsulation (PIE).
+-- Class may contain "fields" (the data) and "methods" (the behaviors).
+-- The "fields" and "methods" are called "members" of a class.
+-- To execture a "method" we need to create an "instance" of the class -- creating an "object" of sorts.
+-- Just like with the built-in classes, we can create our own types as well.
+    EX:
+    public class HelloWorld {
+
+        String message = "Hello World";
+
+        void sayHello() {
+            System.out.println(message);
+        }
+    }
+
+    INSTANCE:
+
+    public class HelloWorldRunner {
+
+        public static void main(String[] args) {
+            HelloWorld hello = new HelloWorld();
+            hello.sayHello();
+        }
+    }
+
+THE "THIS" KEYWORD
+
+-- Whenever you use "this", it always refers to the object that the given code is currently within.
+-- "this" will always be an instance of the given class
+-- When a local variable has the same name as a field, we say that the local variable "shadows" the field. Errors caused by shadowing can be tricky to spot, so it's best to avoid doing this in your code.
+
+ACCESS MODIFIERS
+
+-- Every class member has an access level that determines who can access that class.
+    -- For fields, the access level determines who can get or set the value of the field.
+    -- For methods, the access level determines who can call the method.
+    -- The access level of a class member is determined by an "access modifier".
+
+-- "public"
+    -- allows a filed or method to be used by anyway
+    -- Class: Y
+    -- Package: Y
+    -- Subclass: Y
+    -- World: Y
+
+-- "private"
+    -- allows a field or method to be used only within the class in which it is defined
+    -- Class: Y
+    -- Package: N
+    -- Subclass: N
+    -- World: N
+
+
+-- "protected"
+    -- Class: Y
+    -- Package: Y
+    -- Subclass: Y
+    -- World: N
+
+-- "default" / "package-private" (nothing added)
+    -- Class: Y
+    -- Package: Y
+    -- Subclass: N
+    -- World: N
+
+REWRITING THE ABOVE EXAMPLE
+
+    public class HelloWorld {
+
+        private String message = "Hello World";
+
+        public void sayHello() {
+            System.out.println(message);
+        }
+    }
+
+    Since "message" only needs to be used by "sayHello", we declare it to be "private". Since we want "sayHello" to be usable by anyone else, we declare it to be "public".
+
+PRO TIP!
+    In Java, you should always use the most restrictive access modifier possible. Minimimizing access to class members allows code to be refactored more easily in the future, and hides details of how you implement your classes from others.
+
+    This makes your code more modular and modifiable. Each public member that you expose is another field or property that can be referenced directly elsewhere in any program using your class. Thus, changing any such field in you code could potentionally break any code referencing such members. The fewer public members, the more you can cahnge your code without breaking stuff elsewhere.
+
+ENCAPSULATION
+
+-- "encapsulation": The bundling of related data and behaviors that operate on that data, usually with restricted access to internal, non-public data and behaviors. In object-oriented programming, encapsulation is achieved through the use of objects.
+-- In other words, classes and objects allow us to encapsulate, or isolate, data and behavior to only the parts of our program to which they are relevant.
+
+FIELDS
+
+-- We previously defined a field as a variable, or piece of data, that belongs to a class.
+-- While they "can" be declared anywhere within a class, fields should always be declared at the top of the class. When we're reading to add methods, we'll add them below the fields.
+
+    public class Student {
+
+        String name;
+        int studentId;
+        int numberOfCredits;
+        double gpa;
+    }
+
+-- Fields are also referred to as "instance variables", since they belon to an instance of a class. In other words, each object will have is own copy of each instance variable.
+
+GETTERS AND SETTERS
+
+-- FIELDS SHOULD ALWAYS BE PRIVATE UNLESS YOU HAVE A VERY, VERY GOOD REASON TO NOT MAKE THEM SO.
+
+    public class Student {
+
+        private String name;
+        private int studentId;
+        private int numberOfCredits;
+        private double gpa;
+
+    }
+
+-- In order to provide access to private fields, "getter and setter methods" are used.
+    -- They get and set a given field.
+        EX:
+            
+            public String getName() {
+                return name;
+            }
+
+            public void setName(String aName) {
+                name = aName;
+            }
+
+            NOTE: Prefixing a parameter that is intended to set an instance variable with "a" is a relatively common convention, and one that we'll adopt to avoid shadowing and having to use "this" in our setters. You can think of "a" as denoting the "argument" version of the variable.
+
+-- "Why make the fields private if you're just going to allow people to get and set them anyway?"
+    1. Sometimes you'll want to implement behavior that happens every time a field is accessed (get) or changed (set). If        you don't use getters and setters, you'll have to do a lot more refactoring if youe ver decide to add such behaviors.
+    2. You can perform validation within a setter. For example, we might want to ensure that a student's name contains only      certain characters, or that their student ID is positive.
+    3. You can use different access modifiers on getters and setters for the same field, based on desired usage. For example, you might want to allow anyone to be able to read the value of a field, but only classes within the same package to modify it. You could do this with a public getter and a package-private setter, but not as a field without getters and setters, which coiuld only be public to everyone or package-private to everyone.
+
+-- WARNING:
+    -- When writing getters and setters, the convention for a field named "field" is to name them "getField" and "setField". This is more than just a convention, as some libraries you use will expect names to be of this format, and won't work as desired if you don't follow the convention.
+
+    Additionally, it's a standard convention to use "is" instead of "get" for boolean fields. So a boolean field of "oldEnoughToVote" would have the "getter" method "isOldEnoughToVote". The setter should still be named "setOldEnoughToVote".
+
+PROPERTIES
+
+-- A "property" in Java is a characteristic that users can set. Our "Student" class has properties "name", "studentId", "numberOfCredits", and "gpa".
+-- Most often, properties will be fields that have public setters, though they need not have a corresponding field. Let's look at an example of aproperty that doesn't directly correspond to a field.
+
+-- NOTE:
+    There are slight variations among Java developers when it comes to colloquial usage of the term "property". People will sometimes define the term in a slightly more specific or narrow way, to mean a private field with public getters and setters. Our definition here reliss on the more general definition given by Oracle.
+
+CONSTRUCTORS
+-- "Constructors" set the initial value of fields when creating a new object from a class.
+-- Constructors have the same name as the class and are most often declared public. They are declared WITHOUT A RETURN TYPE.
+    EX:
+
+    public class HelloWorld {
+
+        private String message = "Hello World";
+
+        public HelloWorld(String message) {
+            this.message = message;
+        }
+
+        public String getMessage() {
+            return message;
+        }
+
+        public void setMessage(String aMessage) {
+            message = aMessage;
+        }
+    }
+
+    This constructor allows us to create "HelloWorld" objects with custom messages. The assignment "this.message = message" assigns the value passed into the constructor to the field message. Here's how we might use it:
+
+    HelloWorld goodbye = new HelloWorld("Goodbye World");
+    System.out.println(goodbye.getmessage());
+
+    WARNING --
+    It is not required that every class have a constructor. If you don't provide one, the Java compiler will generate an "empty" constructor for you, known as the "default constructor".
+    
+        public HelloWorld() {}
+
+    While this can be convenient, you almost always want to provide a constructor to properly initialize your objects.
+
+OVERLOADING CONSTRUCTORS
+-- "Constructor overloading" is when we provide multiple constructors for a given class in order to allow for different initialization scenarios. When providing multiple constructors, we must ensure that each has a different collection of arguments as determined by the number, order, and type of the constuctor arguments.
+    EX
+        public class Student {
+            private String name;
+            private final int studentId;
+            private int numberOfCredits;
+            private double gpa;
+
+            public Student(String name, int studentId, int numberOfCredits, double gpa) {
+                this.name = name;
+                this.studentId = studentId;
+                this.numberOfCredits = numberOfCredits;
+                this.gpa = gpa;
+            }
+
+            public Student(String name, int studentId) {
+                this.name = name;
+                this.studentId = studentId;
+                this.numberOfCredits = 0;
+                this.gpa = 0.0;
+            }
+
+        }
+
+        The first constructor allows for the creation of "Student" objects where the code creating the object provides initial values for each of the fields. The second allows for the creation of "Student" objecst with only "name" and "studentId". The first constructor would be most useful when transferring a student, where credits and GPA might already be non-zero. However, for all new students it would be save to initialize "numberOfCredits" and "gpa" to be 0.
+
+        A better way to write it:
+
+            public class Student {
+
+                private String name;
+                private final int studentId;
+                private int numberOfCredits;
+                private double gpa;
+
+                public Student(String name, int studentId, int numberOfCredits, double gpa) {
+                    this.name = name;
+                    this.studentId = studentId;
+                    this.numberOfCredits = numberOfCredits;
+                    this.gpa = gpa;
+                }
+
+                public Student(String name, int studentId) {
+                    this(name, studentId, 0, 0);
+                }
+            }
+
+        In this case, the second constructor calls the first with the "default" values for numberOfCredits and gpa. If you use this syntax, the call to "this()" must be the first line in the constructor. This is a good practice not only because it makes your code shorter, but also because it allows any initialization behavior that may be carried out beyond just initializing variables to be contained in a smaller number of constructors.
+
+        PRO TIP --
+        When defining constructors, think about:
+        1. Which fields must be initialized for your class to work properly? Be sure you initializ every such field.
+        2. Which fields should be initialized by the user creating an object, and which should be initalized by the class itself?
+        3. What are the use-cases for your class that you should provide for?
+
+CUSTOMIZING FIELDS
+
+-- Final Fields
+    -- A "final field" is one that can not be changed once it is initialized. This means slightly different thing sfor primitive and class types. We create final fields by declaring them with the "final" keyword.
+        -- Final primitive fields can not change their value once they are initialized.
+        -- Final object fields may not change the object that they hold once they are initialized. However, the object itself may change.
+
+-- Static fields
+    -- A "static field" is a field that is declared with the static keyword. It is shared by all instances of the class. EX: Setting absolute zero in our temperature class example so you don't have to add it to EACH and every constructor.
+
+-- Constants
+    -- Unlike some other languages, Java doesn't have a special keyword to declare a constant (that is, unchangeable) variable. However, we can achieve the same net result using a combination of "static" and "final".
+
+    public class Constants {
+        public static final double PI = 3.14159;
+        public static final String FIRST_PRESIDENT = "George Washington";
+    }
+
+    -- Throughout the rest of the unit when they say "constant" they mean a "static final" variable.
+        -- We use different naming convention for constants than for other variables. Constants should be in all-caps, with an underscore to separatewords.
+        -- There is no strong reason to make constants private, as long as we initialize them where they are declared (so that somebody else doesn't give them a value first). We'll generall make our constants public.
