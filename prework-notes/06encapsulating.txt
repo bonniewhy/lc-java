@@ -1,0 +1,131 @@
+NOTES ---
+
+-- A "method" is a procedure that belongs to a class. In Java, all procedures must be part of a class, a significant difference from Python, where functions may stand on their own.
+
+MORE ABOUT ACCESS --
+    -- Use private if you create a utility method that works only within the one class. You can think of "private" methods as those that are not useful outside of the class, but that can contribute internally to helping the class behave as desired or expected.
+    -- Use public methods when you expect other classes to use them, and when you are committed to mainting those methods for other calling programs that may use them.
+
+INSTANCE METHODS --
+    -- Belong to each object created, and will use the data of each such object.
+    -- Instance methods rely on each object's specific data.
+
+STATIC METHODS --
+    -- Static methods belong to the class as a whole, and not to any of the specific instances of the class.
+    -- Sometimes called "class methods".
+    -- Static methods must NOT rely on data from a specific object.
+    -- A method should be static when it doesn't refer to any instance fields of the containing class (it may refer to static fields however).
+    -- Tend to be utility-like. EX: Carrying out calculation, or using or fetching some external resource.
+
+SPECIAL METHODS --
+    toString() --
+        used on a method, returns a string version of the method:
+            EX:
+                default: toString(student);
+                returns "org.launchcode.java.demos.java4python.school.Student@61bbe9ba"
+                (probably won't use this.)
+
+                better:
+                public String toString() {
+                    return name + " (Credits: " + numberOfCredits + ", GPA: " + gpa + ")";
+                }
+
+                returns "John (Credits: 0, GPA: 0.0)"
+
+    equals() --
+        -- Will only consider two objects equal if they are the "exact same object".
+        -- Overriding -- entails creating different behavior for an existing method.
+
+        EX: If we want to specify that two Student objects are equal if they have the same id:
+
+        override the equals method:
+
+        public boolean equals(Object o) {
+            Student theStudent = (Student) o;
+            return theStudent.getStudentId() =- getStudentId();
+        }
+
+        -- Input parameter must be of type "Object".
+        -- We must "cast" or convert the input "o" to be of type Student with the syntax "(Student) o".
+        -- This "equals()" method is not very good to use...
+            
+            -- PROBLEM #1 -- The method argument can not be converted to a "Student" instance.
+                -- When we attempt to cast the argument "o" to type "Student", we'll get an exception if "o" can't be properly converted. This would happen if someone passes something other than a "Student" object into "equals()".
+
+                To fix this, we can put more shit in our code:
+
+                public boolean equals(Object o) {
+
+                    if (o.getClass() != getClass()) {
+                        return false;
+                    }
+
+                    Student theStudent = (Student) o;
+                    return theStudent.getStudentId() == getStudentId();
+                }
+
+            -- PROBLEM #2 -- "o" might be "null".
+                --  If "o" is null, than "o.getClss()" will result in an exception. This is an easy issue to fix, since comparing a non-null object to "null" will evaluate to "false".
+
+                Reworked:
+
+                public boolean equals(Object o) {
+
+                    if (o == null) {
+                        return false;
+                    }
+
+                    if (o.getClass() != getClass()) {
+                        return false;
+                    }
+
+                    Student theStudent = (Student) o;
+                    return theStudent.getStudentId() == getStudentId();
+                }
+
+            -- PROBLEM #3 -- The two object to compare are "the same" object.
+                -- This is less of a problem per se and more of a way we can improve our "equals()" method. If "o" is the same literal object that we are attempt to compare it to, then we can make a quick determinatino and save a few checks.
+
+                Reworked:
+
+                public boolean equals(Object o) {
+
+                    if (o == this) {
+                        return true;
+                    }
+
+                    if (o == null) {
+                        return false;
+                    }
+
+                    if (o.getClass() != getClass()) {
+                        return false;
+                    }
+
+                    Student theStudent = (Student) o;
+                    return theStudent.getStudentId() == getStudentId();
+                }
+
+        -- Almost every equals method that you write will look similar to this --
+            1. Reference check: if the two objects are the same, return "true" right away.
+            2. Null check: if the argument is "null", return "false".
+            3. Class check: compare the classes of the two objects to ensure a safe cast.
+            4. Cast: convert the argument to the type of our class, so getters and other methods can be called.
+            5. Custom comparison: use custom logic to determine whether or not the two objects should be considered equal. This will usually be comparison of properties or fields.
+
+        -- Characteristics each equals method should have:
+            1. Reflexivity: For any non-null reference value "x", "x.equals(x) should return "true".
+            2. Symmetry: For any non-null reference values "x" and "y", "x.equals(y)" should return "true" if and only if "y.equals(x)" returns true.
+            3. Transitivity: For any non-null refrence values "x", "y", and "z", if "x.equals(y)" returns "true" and "y.equals(z)" returns "true", then "x.equals(z)" should return true.
+            4. Consistency: As long as "x" and "y" do not change "x.equals(y)" should always return the same result.
+            5. Non-null: For any non-null refrence value "x", "x.equals(null)" should return "false".
+
+            Using the general approach outlined above will mostly likely make these relatively simple to guarantee, not doing so can be disastrous for your Java applications.
+
+SINGLE RESPONSIBILITY PRINCIPLE --
+    -- States that every module or class should have responsibility over a single part of the functionality provided by the software, and that responsibility should be entirely encapsulated by the class.
+        -- Classes should be small.
+        -- EX: It doesn't mean adding functionality to the "Student" class that tracked all of the data for each of the student's classes, such as catalog number instructer, and so on. Those are clearly different areas of responsibility.
+        -- THE MAIN THING to keep in mind is taht your skill and judgement in creating Java classes will improve over time.
+
+        THE BEST WAY TO IMPROVE IS TO WRITE LOTS OF CODE, ASK LOTS OF QUESTIONS, AND CONTINUE LEARNING!!
