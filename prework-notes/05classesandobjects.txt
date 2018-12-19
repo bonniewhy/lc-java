@@ -258,4 +258,88 @@ CUSTOMIZING FIELDS
 
     -- Throughout the rest of the unit when they say "constant" they mean a "static final" variable.
         -- We use different naming convention for constants than for other variables. Constants should be in all-caps, with an underscore to separatewords.
-        -- There is no strong reason to make constants private, as long as we initialize them where they are declared (so that somebody else doesn't give them a value first). We'll generall make our constants public.
+        -- There is no strong reason to make constants private, as long as we initialize them where they are declared (so that somebody else doesn't give them a value first). We'll general make our constants public.
+
+_________________________________________________________________________________
+CLASS NOTES ---
+
+-- 3 PILLARS OF OBJECT ORIENTED PROGRAMMING
+        (THIS WILL BE ASKED IN A JOB INTERVIEW, SO LOOK UP MORE INFORMATION ON THIS!!)
+    1. POLYMORPHISM
+        -- Polymorphism allows the expression of some sort of contract, with potentially many types implementing that contract (whether through class inheritance or not) in different ways, each according to their own purpose.
+            -- EX: Interfaces (allow you to dictate a contract / API). Any class that implements this interface has to have a specific method. As soon as you implement the class, you must have the interface, and you can create a bunch of classes that all implement the top level class as long as you put that specific method it needs in it.
+
+            INTERFACE called ANIMAL
+                which has a method called SPEAK which needs to be defined when called.
+
+            Classes called DOG, CAT, HORSE, etc.
+            
+            And each will have their own required thing that has WOOF, MEOW, NEIGH, etc.
+
+            Then, after you have these lists, you can create a new object called GOOFY that would be calling "= new DOG".
+
+            Look this up on wiki. He found a really good example of the code there and showed it to us.
+
+            INTERFACES and ABSTRACT CLASSES -- you can not create an object from those!
+            INTERFACES can only create method signatures that have to be implemented by the classes that call them. ABSTRACT CLASSES can have methods that can be called from other methods and classes.
+
+    2. INHERITANCE
+        -- Inheritance is a mechanism wherin a new class is derived from an existing class. In Java, classes may inherit or acquire the properties and methods of other classes. A class derived from another class is called a subclass, whereas the class from which a subclass is derived is called a superclass.
+            -- Any subclass can access any variable and method from the superclass.
+            -- Person class, takes in a first name and last name. Then we make a subclass called "Student" which takes a first name, last name, gpa. We can call the parent class variables to instantiate a new Student object.
+
+    3. ENCAPSULATION
+        -- Encapsulation in Java is a mechanism of wrapping the data (variables) and code acting on the data (methods) together as a single unit. Declare the variables of a class as private. Provide public setter and getter methods to modify and view the variables values.
+            -- In object oriented programing, when we create classes, we create variables, data and method in each of these classes -- therefore encapsulating those. :D
+
+A MINIMAL CLASS --
+
+public class HelloWorld {
+    String message = "Hello World";
+
+    void sayHello() {
+        System.out.println(message);
+    }
+}
+
+public class HelloWorldRunner{
+
+    public static void (4
+
+THE THIS KEYWORD --
+    -- "this" is always anything referring to the class.
+        EX:
+
+        public class HelloWorld {
+            String message = "Hello World";
+
+            public void sayHello() {
+                Sting message = "Goodbye World";
+
+                System.out.println(message); // prints "Goodbye World"
+                System.out.println(this.message); // prints "Hello World" because THIS will find the class variable, not the "method" variable.
+            }
+
+ACCESS MODIFIERS --
+-- PUBLIC: Anybody can access it (the world)
+-- PRIVATE: Only the class can access it (nobody else)
+-- PROTECTED: Package and subclasses can access it
+-- DEFAULT (PACKAGE-PRIVATE): Only classes in the same package can access it.
+
+SINGLE THREADED -- 1 path, single step.
+Sometimes you'll need to have things that are MULTI-THREADED that will be doing things all over the place, that's why this access stuff is so important. It's a kind of advanced concept, so look it up later. Maybe. If you need it.
+
+Good code is clean, easy to read, and easy to understand. No one wants really complicated code that looks impressive. Everyone wants to be able to read the code, so make sure it's well documented and well tested.
+
+STATIC VARIABLES are class level variables. They care created for the class and do not require the class to be instantiated.
+INSTANCE VARIABLES are created when the class is instantiated. If you don't write "static", it will be INSTANCE.
+
+Having your variables set to things other than "null" is a good practice.
+
+IT IS NOT A GOOD IDEA to leave potentionally null or invalid values after constructing an instance of your class. Use default values, or empty list, or zeros, or empty strings to be safe!
+
+LOOK UP MORE INFO ON JAVADOC? /** @return {@link something} blah blah {@code null} ... He touched on it, but you should find out more about it.
+
+
+
+**************************GO BACK AND READ THE SLIDES FOR THIS LECTURE!!!!!!
