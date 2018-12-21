@@ -164,3 +164,11 @@ CLASS NOTES --
        return gpa >= 2.0 ? true :false;
     
     }
+
+    Ternary Argument syntax:
+    pass boolean expression ? always true : always false;
+
+Effective Java -- Joshua Block
+Clean Code
+101 Things Every Software Architect Should Know
+Or Google "builder pattern"
