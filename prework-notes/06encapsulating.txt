@@ -129,3 +129,38 @@ SINGLE RESPONSIBILITY PRINCIPLE --
         -- THE MAIN THING to keep in mind is taht your skill and judgement in creating Java classes will improve over time.
 
         THE BEST WAY TO IMPROVE IS TO WRITE LOTS OF CODE, ASK LOTS OF QUESTIONS, AND CONTINUE LEARNING!!
+
+__________________________________________________________________________
+CLASS NOTES --
+
+-- The "System.out.println(object)" will call the "toString()" usless method on the object that is passed into it automatically without any extra syntax.
+-- Equality means two different objects, based on your equals() method implementation, have equal values.
+-- Identity means that the two objects point to the same reference in memory
+    -- ie. they are the same identical object.
+-- When trying to override a parent class, you must use the override annotation.
+    -- @override
+
+    -- The @override annotation tells java to ignore the parent classes method (with the same method signature) and use yours. It is required for overriding any of the default object methods.
+-- NOTE: There are libraries that do this for you such as "Apache Commons" that make life easier. :D
+-- "Agile Software Development Principles, Patterns and Practices"
+    -- Great book to learn more about SRP.
+-- SRP code is well organized, less fragile, less coupled, more maintainable and more testable! <3
+-- Ternary operators:
+    public boolean isPassing() {
+        if(gpa != null) {
+            if(gpa >= 2.0) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+    }
+
+    MAKE IT SHORTHAND WITH TERNARY (The above and below are equivalent)
+
+    public boolean isPassing() {
+
+       return gpa >= 2.0 ? true :false;
+    
+    }
