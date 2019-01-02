@@ -4,7 +4,7 @@ INTRO
 -- If you have a main function, you can run the program with a green arrow on the left (eliminating the need for you to create a new configuration for every. single. new. class you make.) You can also right click on the file itself, and / or the main editing window which will have a "run" option you can select.
 -- alt-Return will help you import a class as you type that you will need so you don't have to manually type it at the beginning before you start writing your code.
 -- "Cannot resolve symbol" means your Class, variable, etc. doesn't exists.
--- shift-F6 will help you refactor all instances of your "variable" if you wanna change things. It can also be used across mutliple files.
+-- shift-F6 will help you refactor all instances of your "variable" if you wanna change things. It can also be used across multiple files.
 -- Finding all usages of methods and such, right click on your method name and click on "Find usages" and it'll return everywhere it is used, but not if the method name is in a comment or something else like that. It also goes across files.
 -- If you hover over a method, you can click on it with CTRL- or CMND- click and it'll open up the "definition" of that class or method so you can see what it's doing.
 
@@ -12,10 +12,10 @@ DEBUGGING
 -- Add a break point by going to the left pane and click there and it'll stop/pause the execution of your program in debug mode so you can inspect where a logic error might be in your code. IntelliJ saves the break points for you, so make sure you remove them when you're done with them.
 -- Step-Over : Executes a given line then steps to the next executable line.
 -- Step-Into : Allows you to review a called method and see what is going on line by line within that method.
--- Step-Out-Of : Allows you to move out of the mthod you stepped into and resume stepping through the main code.
+-- Step-Out-Of : Allows you to move out of the method you stepped into and resume stepping through the main code.
 
 GIT
--- The base package is, by convention, the URL of your company, but you just do it backwards. eX: org.launchcode
+-- The base package is, by convention, the URL of your company, but you just do it backwards. EX: org.launchcode
 -- Git Ignore -- Java templates, ".idea" directory, "*.iml" files.
 
 
@@ -24,7 +24,7 @@ SPRING BOOT
 -- Spring MVC is a module that allows us to create web apps.
 -- Spring Boot is an extension of Spring MVC
 -- "Convention over configuration"
-    -- When we're going to set up our framework, let's go ahead and put a bunch of default types of behaviours into place so the user doesn't have to do it.
+    -- When we're going to set up our framework, let's go ahead and put a bunch of default types of behaviors into place so the user doesn't have to do it.
     -- Provides embedded applications server
         -- will run our Java apps. (Tomcat)
     -- Uses lots of default settings and locations

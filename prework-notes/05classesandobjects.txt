@@ -3,7 +3,7 @@ NOTES ---
 -- Three Pillars of Object-Oriented Programming: polymorphism, inheritance, and encapsulation (PIE).
 -- Class may contain "fields" (the data) and "methods" (the behaviors).
 -- The "fields" and "methods" are called "members" of a class.
--- To execture a "method" we need to create an "instance" of the class -- creating an "object" of sorts.
+-- To execute a "method" we need to create an "instance" of the class -- creating an "object" of sorts.
 -- Just like with the built-in classes, we can create our own types as well.
     EX:
     public class HelloWorld {
@@ -39,7 +39,7 @@ ACCESS MODIFIERS
     -- The access level of a class member is determined by an "access modifier".
 
 -- "public"
-    -- allows a filed or method to be used by anyway
+    -- allows a field or method to be used by anyone
     -- Class: Y
     -- Package: Y
     -- Subclass: Y
@@ -51,7 +51,6 @@ ACCESS MODIFIERS
     -- Package: N
     -- Subclass: N
     -- World: N
-
 
 -- "protected"
     -- Class: Y

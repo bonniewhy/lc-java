@@ -213,7 +213,7 @@ WHILE LOOPS ---
             -- Very similar to the while loop, except that the condition is evaluated at the end of the loop rather than the beginning. This ensures that a loop will be executed at least one time. Some programmers prefer this loop in some situations because it avoids an additional assignment prior to the loop.
 
 BREAK AND CONTINUE STATEMENTS ---
-    -- "break" statement is used in instances wher eyou may want to terminate a loop if a given condition is met. EX: If you want to loop through an array of integers searching for a given integer and you want to quit the loop once that number is found:
+    -- "break" statement is used in instances where you may want to terminate a loop if a given condition is met. EX: If you want to loop through an array of integers searching for a given integer and you want to quit the loop once that number is found:
         
         public class testBreak {
                 
@@ -373,9 +373,9 @@ ORDERED DATA: LISTS AND ARRAYS --
 
     -- First, we initialize two objects, students and grades, which appears to of type ArrayList<String> and ArrayList<Double> respectively.
     -- An ArrayList in Java is very similar to a list in Python, with one important difference: lists can contain any type of value in Python, but in Java we must let the compiler know what kind of objects our list is going to contain.
-    -- NOTE: All values stored in Java collections must be objects (there for not "primitives"), so we'll have to use wrapper classes in those situations.
+    -- NOTE: All values stored in Java collections must be objects (therefore not "primitives"), so we'll have to use wrapper classes in those situations.
     -- We then initialize each list by creating a new, empty list when we call the ArrayList constructor as in new ArrayList<>(). We don't need to specify type as it's implicit in the left side of the argument.)
-        -- NOTE: You will sometimes see ArrayList<E>, where "E" represents a placeholder for the type that a programmer will declare a given list to hold. You can think of "E" as representing an arbitrary type. Classes like ArrayList<E> that take another type or class as a parameter arereferred to as "generic classes" or "generic types".
+        -- NOTE: You will sometimes see ArrayList<E>, where "E" represents a placeholder for the type that a programmer will declare a given list to hold. You can think of "E" as representing an arbitrary type. Classes like ArrayList<E> that take another type or class as a parameter are referred to as "generic classes" or "generic types".
 
     -- Since we use a do-while loop, the user has to press enter to move to the next block.
     -- Then we use the .add() method which is provided by the ArrayList class.
@@ -546,7 +546,7 @@ JAVA (HASHMAP VERSION) --
         Double jesseGrade = students.get(name);
 
     -- Looping through a map is slightly more complex than it is for lists. In the above ex:
-        -- The iterator variable, student, is of type Map.Entry<String, Double>. The class Map.Entyr is specifically constructd to be used in this fashion, to represent key/value paris within HashMaps. Each Map.Entry object has a getKey method and a getValue method, which represent (surprisingly enough), the key and value of the map item.
+        -- The iterator variable, student, is of type Map.Entry<String, Double>. The class Map.Entry is specifically constructd to be used in this fashion, to represent key/value pairs within HashMaps. Each Map.Entry object has a getKey method and a getValue method, which represent (surprisingly enough), the key and value of the map item.
 
 HASHMAP METHODS ---
     -- Also, not all of the HashMap methods that exist, but here are some common useful ones:
@@ -565,8 +565,8 @@ CLASS NOTES ---
 
 * LOOK UP THE DIFFERENCE BETWEEN STATIC AND NON-STATIC (REGULAR) METHODS...
 
--- "if" statments can only result in a boolean AKA "if (condition) {" -- "condition" can only be a boolean.
--- Hank really likes switch statements. So, maybe don't believe everything you hear...
+-- "if" statements can only result in a boolean AKA "if (condition) {" -- "condition" can only be a boolean.
+-- Hank really likes switch statements. So, maybe don't believe everything you hear and read...
 -- Java doesn't have "range"s like Python does. D:
 -- i+=2 will increment by 2, aka good way to step through even numbers only or whatever.
 -- Loops don't have to increment, and they can also decrement.
@@ -580,7 +580,7 @@ CLASS NOTES ---
             System.out.println(i);
         }
 
-        NOTE: You're required to provide the type (in this example int) in the for-earch loop.
+        NOTE: You're required to provide the type (in this example int) in the for-each loop.
 
 -- On the continue example, if you don't put that there it'll print both "Found it!" and "Not here" for both of the tens and that's why you get the extra print statements.
 

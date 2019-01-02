@@ -12,7 +12,7 @@ JAVA DEVELOPMENT KIT --
     -- Built-In Java Virtual Machine (JVM)
         -- Makes it so that you can use it on ANY device / OS.
 
-_______________________________________________________________________________________________________
+_____________________________________________________________________________
 
 JAVA FOR PYTHON PROGRAMMERS ---
 
@@ -124,14 +124,14 @@ LINE 3 --
     
     -- "semi-colon"
         -- ";" signifies the end of a statement.
-        -- Unlike Python, Java statements can span across many lines. The compiler only knows its the end of a statment when it gets to the semi-colon.
+        -- Unlike Python, Java statements can span across many lines. The compiler only knows its the end of a statement when it gets to the semi-colon.
     
 LINES 4 & 5 --
     -- They simply close the two blocks out.
     -- The "outer" block is the class definition.
     -- The "inner" block is the function definition.
 
-_______________________________________________________________________________________________________
+_____________________________________________________________________________
 
 DATA TYPES --
 
@@ -210,14 +210,14 @@ JAVA --
         -- 1. The "javac" and "java" commands must know that the class exists.
         -- 2. You must use the full name of the class.
 
-    -- How do the command know that certain classes exist?
+    -- How does the compiler know that certain classes exist?
         -- 1. Java knows about all the classes that are defined in ".java" and ".class" files in your current working directory.
-        -- 2. Java knows about al lthe classes that are shipped with java.
+        -- 2. Java knows about all the classes that are shipped with java.
         -- 3. Java knows about all the classes that are included in your "CLASSPATH" environment variable. "CLASSPATH" can name two kinds of structures:
             -- A jar file that contains java classes. (A jar file is a "Java archive", and ends in ".jar". For now, think of it as a .zip file that contains a bunch of classes.)
             -- Another Unix directory that contains Java class files.
 
-    -- You can think of the "import" statment as being similar to the Python "from module import xxx", but behind the scense the two statements actually do different things.
+    -- You can think of the "import" statment as being similar to the Python "from module import xxx", but behind the scenes the two statements actually do different things.
         -- The class name in Java is very hierarchical.
             -- The full name of the "Scanner" class is actually "java.util.Scanner" The name has two parts:
                 -- The first part "java.util" is called the package.
@@ -262,7 +262,7 @@ CLASS TYPES --
     -- Variables and parameters that are of the type of a class are said to be of "reference type" as opposed to "primitive type".
 
 REFERENCES --
-    -- A variable of a reference type (such as "myCat" above) does not actually store the object in quest. It just stores a "reference" to the object.
+    -- A variable of a reference type (such as "myCat" above) does not actually store the object in question. It just stores a "reference" to the object.
     -- When we assign a value to a reference type, as in "Cat sameCat = myCat", we are not creating a second copy of the object, but instead are creating a second "arrow" point to the same object.
 
 ARRAYS --
@@ -285,7 +285,7 @@ STATIC METHODS --
     -- You are encouraged not to refer to methods as "functions" when you are talking about Java code.
 
     -- "static methods" behave similarly to functions as you knew them in Python.
-    -- A static methods i one with the "static" keyword, as our "main" method has above.
+    -- A static methods is one with the "static" keyword, as our "main" method has above.
 
     WARNING: Until we get into Object Oriented Programming, every method we write will have the "static" keyword. Leaving off "static" will prevent you from calling methods you define as you would like to.
 
@@ -323,8 +323,8 @@ STATIC METHODS --
 
     -- To call a static method, we must use the name of the class in which it is defined, followed by ".", followed by the name of the method. EX: Message.getMessage("fr");
 
-    -- We are able to call this method from another class because it is declare to be "public". If we wanted to restrict the method from being called by another class, we could instead use the "private" modifier.
-_______________________________________________________________________________________________________
+    -- We are able to call this method from another class because it is declared to be "public". If we wanted to restrict the method from being called by another class, we could instead use the "private" modifier.
+_____________________________________________________________________________
             
 CLASS NOTES ---
 
@@ -374,7 +374,7 @@ STATIC vs DYNAMIC TYPING
         -- String name = "Hank";
         -- This is an example of a statitcally typed (or type safe) language defining a variable. Must end with a semi colon.
 
-    -- The difference between python and Java is that you can take that name variable from the previous slide and change it.
+    -- The difference between Python and Java is that you can take that name variable from the previous slide and change it.
         -- Once you declare a type of variable, the only thing you can store in there is a string. Or whatever data type you defined the variable as.
 
 PRIMITIVES (AND THEIR OBJECT COUNTERPARTS)
@@ -400,8 +400,8 @@ PRIMITIVES (AND THEIR OBJECT COUNTERPARTS)
 IMPORTING
     -- As you have imported libraries in your Python projects, so can you import libraries (or standard JDK classes) into your Java projects
         -- For example: Import java.util.Scanner;
-        -- This will allow you to use the Scanner class in your class, without it, your projecrt will through a ClassNOtFound exception.
-        -- In order to import a class into your proejct, it must be on the "classpath".
+        -- This will allow you to use the Scanner class in your class, without it, your project will throw a ClassNotFound exception.
+        -- In order to import a class into your project, it must be on the "classpath".
             -- Literally just a path where all of your classes exist.
 
 DECLARING VARIABLES
@@ -415,7 +415,7 @@ I/O AND SCANNER
         -- This declares a new scanner instance that takes input from the system.in or the console for user input. It could also take input from a file, stream, etc.
 
         -- Once declared, we can use the scanner to accept input from the user, please note, though, that you must know what kind of input to expect (String, double, int, etc)
-            -- Eg. Fahrenheit = in.newtDouble(); -- This accepts a double input from the user and stores it in Fahrenheit
+            -- Eg. Fahrenheit = in.nextDouble(); -- This accepts a double input from the user and stores it in Fahrenheit
                 -- A good practice is to take all user input in as Strings and just convert them to the correct datatype later.
 
 INSTANTIATING OBJECTS (PYTHON & JAVA)
