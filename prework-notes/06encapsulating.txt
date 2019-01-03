@@ -4,7 +4,7 @@ NOTES ---
 
 MORE ABOUT ACCESS --
     -- Use private if you create a utility method that works only within the one class. You can think of "private" methods as those that are not useful outside of the class, but that can contribute internally to helping the class behave as desired or expected.
-    -- Use public methods when you expect other classes to use them, and when you are committed to mainting those methods for other calling programs that may use them.
+    -- Use public methods when you expect other classes to use them, and when you are committed to maintaining those methods for other calling programs that may use them.
 
 INSTANCE METHODS --
     -- Belong to each object created, and will use the data of each such object.
@@ -65,7 +65,7 @@ SPECIAL METHODS --
                 }
 
             -- PROBLEM #2 -- "o" might be "null".
-                --  If "o" is null, than "o.getClss()" will result in an exception. This is an easy issue to fix, since comparing a non-null object to "null" will evaluate to "false".
+                --  If "o" is null, than "o.getClass()" will result in an exception. This is an easy issue to fix, since comparing a non-null object to "null" will evaluate to "false".
 
                 Reworked:
 
@@ -118,7 +118,7 @@ SPECIAL METHODS --
             2. Symmetry: For any non-null reference values "x" and "y", "x.equals(y)" should return "true" if and only if "y.equals(x)" returns true.
             3. Transitivity: For any non-null refrence values "x", "y", and "z", if "x.equals(y)" returns "true" and "y.equals(z)" returns "true", then "x.equals(z)" should return true.
             4. Consistency: As long as "x" and "y" do not change "x.equals(y)" should always return the same result.
-            5. Non-null: For any non-null refrence value "x", "x.equals(null)" should return "false".
+            5. Non-null: For any non-null reference value "x", "x.equals(null)" should return "false".
 
             Using the general approach outlined above will mostly likely make these relatively simple to guarantee, not doing so can be disastrous for your Java applications.
 
@@ -126,7 +126,7 @@ SINGLE RESPONSIBILITY PRINCIPLE --
     -- States that every module or class should have responsibility over a single part of the functionality provided by the software, and that responsibility should be entirely encapsulated by the class.
         -- Classes should be small.
         -- EX: It doesn't mean adding functionality to the "Student" class that tracked all of the data for each of the student's classes, such as catalog number instructer, and so on. Those are clearly different areas of responsibility.
-        -- THE MAIN THING to keep in mind is taht your skill and judgement in creating Java classes will improve over time.
+        -- THE MAIN THING to keep in mind is that your skill and judgement in creating Java classes will improve over time.
 
         THE BEST WAY TO IMPROVE IS TO WRITE LOTS OF CODE, ASK LOTS OF QUESTIONS, AND CONTINUE LEARNING!!
 
@@ -168,7 +168,7 @@ CLASS NOTES --
     Ternary Argument syntax:
     pass boolean expression ? always true : always false;
 
-Effective Java -- Joshua Block
+Effective Java -- Joshua Bloch
 Clean Code
-101 Things Every Software Architect Should Know
+97 Things Every Software Architect Should Know
 Or Google "builder pattern"
