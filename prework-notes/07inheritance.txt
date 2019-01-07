@@ -1,0 +1,261 @@
+NOTES ---
+
+Inheritance -- A mechanism within object-oriented programming that allows one class to be based on another class, thus "inheriting" its properties and behviors. Inheritance is also sometimes referred to as "subtyping".
+
+-- In Java, the sytnax for extending a class requires the "extends" keyword.
+    EX:
+    public class Cat {
+        // ... code for the Cat class ...
+    }
+
+    public class HouseCat exteneds Cat {
+        // ... code for the HouseCat class ...
+    }
+
+    We say that "HouseCat" is a subclass, derived class, or child class of Cat, and we say that "Cat" is the superclass, base class, or parent class of "HouseCat".
+
+-- Let's revisit our Cat / HouseCat classes:
+
+    public class Cat {
+        private boolean tired = false;
+        private boolean hungry = false;
+        private double weight;
+
+        // The biological Family for all cat species
+        private String family = "Felidae";
+
+        public Cat (double aWeight) {
+            weight = aWeight;
+        }
+
+        // GETTERS AND SETTERS
+
+        public boolean isTired() {
+            return tired;
+        }
+
+        public void setTired(boolean aTired) {
+            tired = aTired;
+        }
+
+        public boolean isHungry() {
+            return hungry;
+        }
+
+        public void setHungry(boolean aHungry) {
+            hungry = aHungry;
+        }
+
+        public double getWeight() {
+            return weight;
+        }
+
+        public void setWeight(double aWeight) {
+            weight = aWeight;
+        }
+
+        public String getFamily() {
+            return family;
+        }
+
+        // INSTANCE METHODS
+
+        // A cat is rested and hungry after it sleeps
+        public void sleep() {
+            tired = false;
+            hungry = true;
+        }
+
+        // Eating makes a cat not hungry
+        public void eat() {
+
+            // eating when not hungry makes a cat sleepy
+            if (!hungry) {
+                tired = true;
+            }
+
+            hungry = false;
+        }
+
+        public String noise() {
+            return "Meeeeeeeeooooowww!";
+        }
+    }
+
+    public class HouseCat extends Cat {
+        private String name;
+        private String species = "Felis catus";
+
+        public HouseCat(String aName, double aWeight) {
+            super(aWeight);
+            name = aName;
+        }
+
+        public boolean isSatisfied() {
+            return !isHungry() && !isTired();
+        }
+
+        @Override
+        public String noise() {
+            return "Hello, my name is " + name + "!";
+        }
+
+        public String purr() {
+            return "I'm a HouseCat";
+        }
+    }
+
+    -- Cat has a private string field "family", representing the biological family of all cats. It's not directly accessible by HouseCat, but it may be read via the public getter "getFamily". There isn't a setter, because that family shouldn't ever change.
+
+    -- Methods of the base class "Cat" my be called on instances of the subclass "HouseCat" if they were defined as part of the "HouseCat".
+
+        HouseCat garfield = new HouseCat("Garfield", 12);
+        garfield.eat();
+
+    The "eat" method was defined in "Cat", but may be called on all "HouseCat" instances as well.
+
+    -- The subclass inherits all non-constructor classes from the superclass, but if you wanted to try to call a constructor method from the superclass, it would not compile using this kind of syntax:
+
+        HouseCat thumper = new HouseCat(8.4); 
+        // Calling the weight constructor class
+
+    If we wanted to use such a constructor in the subclass, we would have to explicitly provide it.
+
+        public HouseCat(String aName, double aWeight) {
+            super(aWeight);
+            name = aName;
+        }
+
+        We use the "super" keyword to specify that our constructor should call teh base class constructor with the argument "aWeight". This call to the base class constructor must be the first line of our HouseCat constructor.
+
+OVERRIDING BASE CLASS BEHAVIOR
+-- This can be done by replacing the implementation of an inherited method by a completely new method implementation, called "method overriding".
+
+-- In our example, the "noise" method of "HouseCat" overrides the method of the same name in "Cat" using the "@Override" annotation. If we have a "HouseCat" object and call its noise method, we will be using the method defined in "HouseCat".
+
+-- TIP: @Override is not required, but it can prevent unintentional errors, and makes it clear when reading your code what you intended to do. The compiler will see the annotation and check to ensure that the signatures of the base method and the overriding method match up. If they don't, it will flag an error. This can help prevent you from inadvertently creating a method with a different signature.
+
+-- WARNING: When overriding a method from a base class, the method signature MUST BE EXACTLY THE SAME. Recall that the signature of a method is the method name and access level, along with its return type, and the type an dnumber of input parameters. In this example, the signature of our method is public String noise();
+
+-- When overriding a method, we may call the method from the base class that we're overriding by using "super". EX:
+
+    public STring noise() {
+        if (isSatisfied()) {
+            return "Hello, my name is " + name + "!";
+        } else {
+            return super.noise(); // prints "Meeeeeeoooooowww!"
+        }
+    }
+
+ABSTRACT CLASSES --
+-- To prevent objects of a superclass (which don't make sense because they don't have enough information to be relevant), we can make it an "abstract class".
+    
+    public abstract class Cat {
+        // Cat class definition
+    }
+
+-- ABSTRACT CLASSES ARE CLASSES THAT CAN NOT BE INSTANTIATED. In order to use the behavior of an abstract class, we must extend it.
+
+-- An abstract method is a method in an abstract class that does not hae a body. In other words, it does not have any associated code, only a signature. It must also be marked abstract.
+
+-- In our abstract "Cat" class, it would make sense to make an abstract "noise" method since all types of cats make a noise. By creating this abstract method, we force any class that extends "Cat" to provide its own implementation of that behavior.
+
+    public abstract class Cat {
+        public abstract String noise();
+
+        // More Cat class code
+    }
+
+    Now, classes such as "HouseCat" and "Tiger", must provide their own version of "noise", with the exact same method signature.
+
+DATA TYPING AND INHERITANCE
+-- When one class extends another, a field or local variable of that ytpe of the parent class may hodl and object that is of the type of the child class. EX:
+    Cat suki = new HouseCat("Suki", 8);
+
+-- This is acceptable because a "HouseCat" is a "Cat". The compiler is smart enough to determin which method it should call. EX:
+
+    // Calls HouseCat's noise() method
+    suki.noise();
+
+-- This only works for methods declared in the parent class, though. If we have a "HouseCat" object stored in a "Cat" variable or field, then it is NOT allowed to call methods that are only a part of "HouseCat". EX:
+    
+    // Results in a compiler error, since Cat doesn't have such a method.
+    suki.isSatisfied();
+
+-- If we were really, really sure that we had a "Cat" that was actually a "HouseCat", we could call such a method by first casting:
+
+    // As long as suki really is a HouseCat, this works
+    ((HouseCat) suki).isSatisfied();
+
+-- The danger her is that if "suki" is in fact not a "HouseCat" (it was declared only as a "Cat", after all), then we'll experience a runtime exception.
+
+-- A runtime exception is an error that occurs upon running the program, and is not found by the compiler beforehand. These are danger and situations where they might come up should be avoided. So, don't do all of that above shit.
+
+-- Storing objects of one type (eg. HouseCat) in a variable or filed of another "compatible" type (eg. Cat) is an example of "polymorphism".
+__________________________________________________________________________
+CLASS DIAGRAMS
+
+-- It's important to think about the fields, properties, and methods of your classes, and the relationship of your various classes to each other.
+
+-- Class diagrams are informal tools for sketching out class design.
+
+DIAGRAMMING A SINGLE CLASS --
+
+-- We create a box and divide it into three sections:
+    -- Top: Class name
+    -- Middle: Fields
+        -- We can specify additional useful information, such as access level and data type.
+    -- Bottom: Methods
+        -- We can similarly specify access level, return type, and input parameter types. "+" is often shorthand for public, and "-" as shortand for private.
+        -- If we want to indicate that some methods or fields are omitted, we can use ellipses "...".
+
+    _____________________________________
+    |     STUDENT                        |
+    _____________________________________
+    | -- name: String                    |
+    | -- studentId : int final           |
+    | ...                                |
+    _____________________________________
+    | + getName                          |
+    | + setName                          |
+    | + getStudentId                     |
+    | - setStudentId                     |
+    | ...                                |
+    _____________________________________
+
+DIAGRAMMING CLASS RELATIONSHIPS --
+
+-- Even more useful than diagramming single classes.
+-- Suppose we are designing a program to track students and the classes that they have taken. WE might think about three classes:
+
+    -- Student: Represents an individual student
+    -- Transcript: Represents a student's transcript, including classes that they have taken
+    -- CourseRecord: Represents an individual course that a student has completed, along with the grade achieved.
+
+-- We can represent these three classes and their relationships to each other in the followingd diagram --
+
+    | STUDENT |                     | TRANSCRIPT |
+    -----------                     --------------
+        ...     ------ "has a" -----      ...        
+    -----------                     --------------
+                                          <>
+                                           |
+                                           |
+                                        "has many"
+                                           |
+                                           |
+                                           |
+                                    | COURSE RECORD |
+                                    -----------------
+                                           ...      
+                                    -----------------
+
+-- A plain solid line (for my diagrams "-----") indicates a "one-to-one relationship". For each "Student" there is one "Transcript", and a "Transcript" can be owned by only one "Student".
+
+-- A line with an open diamond on the end indicates a "one-to-many relationship". Each "Transcript" has many "CourseRecord" objects.
+
+-- ANother one we have experienced ("Cat", "HouseCat", "Tiger") is an "is-a" relationship of inheritance. This can be expressed in a class diagram using an arrow, directed from the subclass to the base class.
+
+-- If you are going to be sharing your diagram with someone else, it's always helpful to use a key to indicate the specific meaning you have attached to each symbol used.
+__________________________________________________________________________
+CLASS NOTES ---
