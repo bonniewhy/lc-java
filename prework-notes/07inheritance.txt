@@ -158,6 +158,8 @@ ABSTRACT CLASSES --
 
 -- An abstract method is a method in an abstract class that does not hae a body. In other words, it does not have any associated code, only a signature. It must also be marked abstract.
 
+-- Abstract methods must have the same signature, same input type, and same return type.
+
 -- In our abstract "Cat" class, it would make sense to make an abstract "noise" method since all types of cats make a noise. By creating this abstract method, we force any class that extends "Cat" to provide its own implementation of that behavior.
 
     public abstract class Cat {
@@ -259,3 +261,15 @@ DIAGRAMMING CLASS RELATIONSHIPS --
 -- If you are going to be sharing your diagram with someone else, it's always helpful to use a key to indicate the specific meaning you have attached to each symbol used.
 __________________________________________________________________________
 CLASS NOTES ---
+
+-- Abstract methods are methods that have no implementation, i.e. no code body.
+-- Look up "interfaces" in Java.
+-- Once we make a method abstract, subclasses MUST provide their own implementation of the method.
+-- This is exactly the same as providing, interface a method signature in the interface and then implementing the interface. The class that implements the interface MUST provide the implementation for the method.
+-- An abstract method can only be defined by an abstract class.
+
+-- "instanceof" method -- tells you if an object is an instance of a class. Good to use for validation in "if" statements!
+
+-- The diagrams from the chapter are called "UML" (Unified Modeling Language) diagrams.
+-- Really common when designing really large applications (not usually individual classes)...
+-- This is similar to an ERD (entity-relationship diagram). (LOOK THIS UP!)
