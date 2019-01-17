@@ -1,5 +1,22 @@
 NOTES ---
 
+JAVA / SPRING SKILL TRACK OVERVIEW --
+    -- Procedural Java Syntax
+        -- In contrast to object oriented programming -- ex: loops, variables, conditionals, etc.
+    -- Object-oriented concepts
+        -- Classes and objects, in more detail on how to use those.
+    -- IntelliJ IDE
+        -- Listing this as its important for us to know how to use the tools that are industry standards.
+    -- Spring Boot framework
+        -- Spring is a very large framework, but we are only going to use a small part of it called "Boot" which lets us create web apps and such.
+        -- We're using boot because it sets up a lot of the nitty gritty which allows us to spend more time on the design of classes and such.
+            -- Building controllers to handle requests.
+            -- Building views to present your application to a user
+            -- Building persistaent models to represent the "business logic" and store data
+    -- 
+
+_____________________________________________________________________________
+
 JAVA DEVELOPMENT KIT --
     -- Java Runtime Environment (JRE)
         -- Includes the code behind all the variable types and built-in functions
