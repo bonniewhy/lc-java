@@ -1,0 +1,8 @@
+CLASS NOTES ---
+
+Good Design Practice --
+    -- Model objects should contain a unique identifier (rpimary key in databases, uuids, identifiers, etc) of some sort
+    -- This allows for the value in a table/list/etc
+
+@ModelAttribute --
+    -- 
