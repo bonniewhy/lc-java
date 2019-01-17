@@ -1,0 +1,22 @@
+CLASS NOTES ---
+
+-- @NotNull -- The variable this is declared above cannot be null, widely used and very helpful.
+-- @Size(min=1, max=100, message="error") -- The variable this is declared above cannot have a size less than 1 character (for a String) and greater than 100 characters and will have a messag eof "error" if not within those constraints. CAN USE A VARIABLE in place of the numbers.
+-- @Valid -- Constraints defined on the object and its properties are be validated when the property, method parameter or method return type is validated. This is placed in the controller.
+
+-- CHECK THE DOC FOR ERROR VALIDATIONS -- DEFINITELY DO THIS!!! https://www.thymeleaf.org/doc/tutorials/2.1/thymeleafspring.html
+
+-- ENUMS --
+    -- An enum type is a special data type that enables for a variable to be a set of predefined constants.
+    -- The variable must be equal to one of the values that have been predefined for it.
+    -- Common examples include compass directions (values of NORTH, SOUTH, EAST, and WEST) and the days of the week.
+    -- Enums can also store values!
+    -- NOTE: enums, by convention, are ALL CAPS!
+
+    -- ENUMS are great because --   
+        -- Define a set of possible valid values
+        -- Easier validation
+        -- No string comparison!
+        -- Can be used in switch statements!!
+
+    
