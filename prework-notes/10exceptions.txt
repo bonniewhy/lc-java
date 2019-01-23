@@ -1,0 +1,56 @@
+CLASS NOTES ---
+
+-- An exception is an event that occurs during the execution of a program that disrupts the normal flow of instructions.
+-- Usually these are considered errors, alternative workflows, etc.
+-- Exceptions are thrown at runtime while running your code/application
+-- Exceptions throw an exception object that contains information about the error, including type, program state and more!
+
+HANDLERS
+-- Exceptions are thrown and handled by "handlers"
+    -- This is code you've written that can handle the excpetion, usually though a try-catch block.
+-- Exceptions are thrown until they can be handled (this could mean that they're not handled at all and thrown to the JRE and cause the program to exit)
+
+3 TYPES OF EXCEPTIONS (2 ACCORDING TO HANK)
+
+-- Checked exceptions - These are exceptional conditions that a well-written application should anticipate and recover from. They are required to be either a) re-thrown or b) in a try/catch block.
+
+-- Runtime exceptions - These are exceptional conditions that are internal to the application, and that the application usually cannot anticipate or recover from.
+
+-- Errors (which are really just runtim excpetions)
+
+THROWING EXCEPTIONS
+-- Throwing exceptions is accomplished via the THROW keyword
+    -- E.G. throw new Exception("Something terrible has happened!");
+
+CHAINED EXCEPTIONS
+-- You can "chain" exceptions in Java
+-- This is accomplished when you include the original exception in your exception creating a chain
+    try {
+    } catch (IOException e) {
+        throw new SampleException("Other IOException", e); // Includes original IOException
+    }
+
+-- Don't swallow exceptions! Make sure you try to record / keep / catch each exception so that you can really figure out what is actually going on and know more about what's going on. Make sure you do something with the exception, aka put something in your catch block so that you know what happened. THIS WILL MAKE YOUR TROUBLESHOOTING EXPONENTIALLY HARDER.
+
+-- LOOK UP "swallowing exceptions" and "TRY/CATCH blocks". (Also read the tutorial, Jesus. Wish I hadn't forgotten about this shit... Why would you want to throw exceptions on purpose? I'm having a lot of trouble wrapping my head around what ... why... this. Why?)
+
+THROWABLE, EXCEPTION & RUNTIME EXCEPTION
+
+-- As mentioned in earlier classes, all classes inherit from the Object class, there is no exception (haha) for excpetion classes.
+-- Throwable is the most top-level class for java errors.
+-- Exception and error inherit from Throwable (Exception actually extends throwable)
+-- Runtime Exception inherits from Excpetion.
+
+RUNTIME EXCEPTIONS (AKA UNCHECKED)
+
+-- Runtime exceptions are sometimes used incorrectly since they do not require the use of a try/catch block.
+-- This can lead to poor error handling for the programmer and a poor experience for the user.
+-- Runtime exceptions should only be used for esxceptional cases that the programmer cannot recover from.
+
+EXCEPTION VS ERROR-HANDLING CODE
+
+-- It's possible to have your code return some error code or value (like null for instance) instead of throwing an exception
+-- This puts the burden of error handling on every caller of your function/method
+-- It is better to clearly define your methods API and throw exceptions accordingly and spell out how they should be handled to any programmer using your APIs.
+-- Make sure your consumers have to handle the exception by using a "checked exception". That way they can fix things themself.
+
