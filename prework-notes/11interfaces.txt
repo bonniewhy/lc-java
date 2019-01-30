@@ -1,0 +1,94 @@
+
+___________________________________________________________________________
+CLASS NOTES ---
+
+POLYMORPHISM
+
+-- "An object-oriented mechanism that allows for objects of different types to be used in the same way."
+-- For example: We can have a cat class and sub classes of "Cat" like "HouseCat" and "Tiger". Being able to use the different types "HouseCat" and "Tiger" as just a "Cat" is an example of polymorphism.
+
+public class CatOwner {
+    private Cat pet; // Notice that we don't specify what type of cat!
+    
+    public CatOwner(Cat pet) {
+        this.pet = pet;
+    }
+
+    public void feedTheCat() {
+        pet.eat();
+    }
+}
+
+INHERITANCE EXAMPLE
+-- The method "feedTheCat" uses the field pet, which is of type "Cat", but since a "HouseCat" "is a" "Cat" via inheritance, it is perfectly acceptable to use an instance of "HouseCat" to fill the pet field.
+
+EX: HouseCat suki - new HouseCat("Suki", 12);
+CatOwner Annie = new CatOwner(suki); // even though the constructor takes a cat object, it's perfectly acceptable to put a "HouseCat" object here or even a "Tiger" (rawr) object here!
+
+Annie.feedTheCat();
+
+INTERFACES
+
+-- We've talked about interfaces (and compared them with abstract classes) before.
+-- An interface is a formal constuction within Java that allows us to create a contract that classes can choose to fulfill. A Java interface may contain:
+    -- Constants (that is, static final fields)
+    -- Method signatures (most common use)
+    -- Static methods
+    -- Default methods (also known as functional interfaces)
+
+-- Recall that a method signature includes the name, parameters, and return type of a method, but no body!
+-- For example:
+    public interface Feedable {
+        void eat();
+    }
+
+-- Default in interfaces are all inherantly "public", not "package-private" like everything else.
+
+INTERFACE OBSERVATIONS
+-- An interface is defined similarly to an abstract class, but using the keyword "interface".
+-- "eat" method only has a signature. WE are not allowed to provied a body for methods defined in interfaces.
+-- "eat" method DOES NOT HAVE an access modifier. Intefae members are always PBULIC, and while we may use the public modifier, it's unnecessary.
+-- The interface itself is declared public, which means any other class may use it. WE may also leae off public, making the interfcae package-privatge, or usable only within the same package.
+-- The name is indicative of the behavior that the interface is intended to describe. While this is only a convention, most interfaces have names that are adjectives.
+
+USING AN INTERFACE
+-- The purpose of an interface is to define a contract that classes may choose to uphold.
+-- We say that classes "implement the interface". The syntax for implementation is similar to that for inheritance.
+
+EX:
+
+public class Cat implements Feedable {
+    @Override
+    public void eat() {
+        // method implementation
+    }
+}
+
+Note: Like abstract classes, interfaces cannot be instantiated.
+
+COMMON INTERFACES IN JAVA
+
+-- Comparable<T> - A class that is comparable using a comparator using the compareTo(T) method.
+-- Comparator<T> - A class that can compare an object using the compare(T, T) method
+-- Iterable<T> - A class that can be iterated over with a given type
+-- List<T> - List interface with a specified type, example implementations include ArrayList, LinkedList, etc.
+    List<String> collection = new ArrayList<>();
+-- Map<K, V> - Map interface with a specified key/vaue pair, example implementations include HashMap, TreeMap, etc.
+    Map<String, STring> collection = new HashMap<>();
+-- Note: The "T" is a placeholder for a Java Generics type. This is specified using angle brackets <>.
+
+DEFAULT METHODS
+-- A default method 
+
+INTERFACES VS ABSTRACT CLASSES
+-- You implement an interface, while you extend an abstract class. Please note that you can only extend 1 class, but can implement multiple interfaces!
+-- Abstract classes may contain non-constant fields, while interfaces may not.
+-- Interfaces may only contain implementation code inside of default or static methods, thus they can't contain methods that need to be shared by class instances in the same way the abstract class do. (No instance variables)
+-- Abstract classes should be used to collect and specify behavior by related classes, while an interface should be used to specify related behaviors that may be common across unrelated classes.
+
+BENEFITS OF INTERFACES
+-- You can only extend one class, but you may implement many interfaces.
+-- You can extend a class and implement an interface at the same time.
+-- By declaring variables and parameters as interface types, you make your code useful for a much wider variety of situations.
+-- When you declare properties and return types to be interface types, you decouple code using your classes from the actual class types you use. This allows you to change the implementations without having to change all of the callers/users.
+
