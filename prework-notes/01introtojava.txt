@@ -465,3 +465,137 @@ STATIC METHODS
 -- Static methods are very similar to functions in Python, they can be called directly without instantiating (or constructing) any objects.
 -- However, that doesn't mean they don't need to be put in a class
 -- Static methods are called like so: ClassName.Method(parameters);
+
+________________________________________________________________________________________________________
+12/3/2018 SLIDE TRANSCRIPTS --
+
+WELCOME!
+    -- Welcome to Unit 3, you've made it this far! Congratulations!
+    -- This is the final unit in your LaunchCode learning adventure!
+    -- The class is 7 weeks long (14 classes total)
+    -- This class covers:
+        -- The basics of Java
+        -- MVC web applications/services with Spring Boot Framework
+    -- Are you ready?!
+
+Why Java?
+    -- As of November 2018 Tiobe Index -- Java is the #1 most popular language with 16.76% of ratings, Python is #4 with 7.68%.
+    -- Therea re numerous companies developing web applications and web services using Java today and Java developers are always in demand!
+    -- Think of Java as Python with structure
+    -- https://www.tiobe.com/tiobe-index/
+
+Hello, World!... Again...
+    public class Hello{
+        public static voide main(String[] args) {
+            System.out.println("Hello, World!");
+        }
+    }
+
+Let's look into this deeper...
+    LINE 1: public class Hello
+        -- This line defines the class itself.
+        -- Classes can be public or private.
+        -- All code in Java must be in a class (unlike Python where you can just start coding, and put variables wherever you want them to be)
+
+    LINE 2: public static void main(String[] args)
+        -- This is the entry point for all standard Java applications
+        -- Again this method is PUBLIC
+        -- STATIC keyword -- This defines that the method is the same per class rather than per instance (more about this later)
+        -- VOID -- This is the return type, in this case void means we aren't returning anything
+        -- MAIN -- This is the name of the main function
+        -- (String[] args) -- This is the function parameters, in this case a String array called args (short for program arguments)
+
+    LINE 3: System.out.println("Hello, World!");
+        -- System.out -- This defines that the output will go to the console or standard output.
+        -- println - Prints a line with a carriage return (new line)
+        -- All String literals must be in double quotes (" ")
+        -- And last, but not least, all lines must end with a semicolon (;)
+
+FORMALITY and STRUCTURE
+    -- As you can see from this simple example, Java has a lot of structure.
+    -- All code MUST be in a class
+    -- All code MUST be in a method or function that has the following:
+        -- A name
+        -- Public/Private/Protected/Package Private declaration
+        -- Return type declaration (void, String, int, etc)
+        -- Curly braces opening/closing the method/function
+
+STATIC VS. DYNAMIC TYPING
+    -- Type safety for the win! If you haven't heard me complain about type-safe languages, or lack thereof, you will now. :)
+    -- Python
+        -- name = "Hank"
+        -- This is an example of a dynamically typed (or type unsafe) langauge defining a variable, called anem, to "Hank" (a string)
+    -- Java
+        -- String name = "Hank";
+        -- This is an example of a statically typed (or type safe) language defining a variable, called name, to again, "Hank" (a string)
+
+DIFFERENCES BETWEEN PYTHON VS JAVA
+    -- The difference between Python and Java is that I can take that name variable from the previous slide and change it.
+        -- Python
+            -- name = 5 // Totally cool and allowed.
+        -- Java
+            -- name = 5; // Fail, this will give you a compile error, can't go from String to int
+    -- You cannot change the type of a variable once declared, I can only store other Strings in the variable name if I declare it as a String.
+
+PRIMITIVES (AND THEIR OBJECT COUNTERPARTS)
+    -- Primitives (int, float, double, char, and boolean) have thier own Object counterparts (Integer, Float, Double, Char, and Boolean)
+    -- Primitives CANNOT be null, objects can.
+    -- Java will do something called "autoboxing" where it will convert from the primitive to the Object form for you automatically.
+        -- EX: int x = 5;
+               Integer y - Integer.valueOf(x);
+
+IMPORTING
+    -- As you have imported libraries in your Python projects, so can you import libraries (or standard JDK classes) into your Java projects!
+        -- EX: import java.util.Scanner;
+            -- This will allow you to use the Scanner class in your class. Without it, your project will throw a ClassNotFound exception.
+    -- In order to import a class into your project, it must be on the "classpath".
+
+DECLARING VARIABLES
+    -- In Python, we can declare variables without specifying what kind of variable it is.
+        -- EX: x = 5.8
+    -- This is not possible in Java, you must declare a type.
+        -- EX: double x = 5.8;
+        -- If you attempt to be a String into "x" like such:
+            double x = "hello";
+            You will get a compile error.
+
+I/O and Scanner
+    -- The java scanner class (found in java.util.Scanner) allows for input and output
+        EX: Scanner in = new Scanner(System.in);
+            -- This declares a new scanner instance that takes input from the system.in or the console for user input. It could aslo take input from a file, stream, etc.
+    -- Once declared, we can use the scanner to accept input from the user. NOTE: You must know what kind of input to expect (String, double, int, etc)
+        EX: Fahrenheit = in.nextDouble(); // This accepts a double input from the user and stores it in Fahrenheit
+
+INSTANTIATING OBJECTS (PYTHON & JAVA)
+    -- When creating classes in Python and Java, it's essentially the same. You want to have data and methods for that data represented.
+    -- Constructing a new cat in Python: my_cat = Cat()
+    -- Constructing a new cat in Java: Cat myCat = new Cat();
+        -- The "new" keyword is used to create an instance of the class Cat in Java.
+
+REFERENCES IN JAVA
+    -- Consider these lines of Java code:
+        int catAge = 11; // Declare a new int (primitive) with catAge set to 11
+        Cat myCat = newCat(); // Instantiate a new cat called myCat
+        Cat sameCat = myCat; // Create a new reference called sameCat that "points" to myCat;
+
+ARRAYS IN JAVA
+    -- Just like Python, we have arrays to store a collection of items (objects, primitives)
+    -- However, unlike Python, we can only store 1 type of object in a given array.
+        int[] someInts = new int[10]; // Declares an array for ints to size 10
+        int[] someOtherInts = {1, 1, 2, 3, 5, 8}; // Declares and initializes an array with values 1, 1, 2,3, 5, 8
+    -- To access a value in an array, we use square brackets (just like Python) with BASE 0.
+        EX: int val = someOtherInts[4]; // Sets vale to 5
+
+STATIC METHODS
+    -- Static methods are very similar to functions in Python. They can be called directly without instantiating (or constructiong) any objects.
+    -- However, that doesn't mean they don't need to be in a class. (Sorry, they do).
+    -- Static methods are called like so:
+        ClassName.Method(parameters);
+        EX: HelloMethods.java & Messagews.java in Java Exercises.
+
+SO -- What have we learned thus far?
+    -- Java is an Object Oriented Language.
+    -- Java is type safe (yay!)
+    -- There are a lot of similarities to Python with regard to syntax, classes, etc.
+    -- This is an introduction to some of the concepts in Java, there is much more to learn! :)
+    

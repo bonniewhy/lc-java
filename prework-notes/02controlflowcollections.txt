@@ -634,5 +634,155 @@ LinkedList -- [ ] [ ] --> [ ] [ ] --> [  ]
 
 These are the four main linear data structures we will most likely be using. Please look up more information on all of this...
 
+_________________________________________________________________________________________________________
+12/6/2018 -- CLASS SLIDES TRANSCRIPT
+
+RECAP --
+    -- Hello World example -- public static void main(String[] args)
+    -- Static vs Dynamic typing (type safety, yay!)
+    -- Strings and primitives (int, double, char, boolean)
+    -- Variable declaration: String message = "Hello, World";
+    -- I/O and Scanner -- Scanner in = new Scanner(System.in);
+    -- Arrays -- int[] myNumbers = {1,2,3,4,5};
+    -- Static vs. non-static (regular) methods
+
+CONDITIONALS (IFs) --
+    -- Conditional statements in Python and Java are very similar. In Python we have three patterns:
+    -- Curly braces - rather than indentation - define a block. They are REQUIRED.
+    -- Instead of elif in Python, you spell out else if.
+
+SWITCH STATEMENTS --
+    -- A switch statement is similar to an if/else if if you have a number of else ifs.
+        switch (dayNum) {
+            case 0:
+                day = "Sunday";
+                break;
+            case 1:
+                day = "Monday";
+                break;
+            default:
+                day = "Int does not correspond to a day of the week";
+        }
+            // In this example, this block runs if none of the above blocks match.
+    
+    -- In this example, the switch statement takes in a dayNum as an integer. The cases are the possible values.
+        EX: if dayNum = 1, then day = "Monday"
+            if dayNum = 9, then day = "Int does not correspond to a day of the week."
+        
+    -- Breaks in case statement prevent the subsequent ase statement from executing.
+    -- The default block executes when NONE of the case statements is valid.
+
+FOR LOOPS & ITERATION --
+    -- for (int i = 0; i < 10; i++) {
+        System.out.println(i);
+    }
+        Start: 0, Stop: 10, Step 1
+        Output: 1, 2, 3, 4, 5, 6, 7, 8, 9
+    -- Java doesn't have ranges like Python (ex: in range(10))
+    -- i++ = Short hand for i += 1 or i = i + 1
+
+    -- for (start clause; stop clause; step clause) {
+        statement 1
+        statement 2
+        ...
+    }
+
+    This is a for loop in Java and is equivalent to a loop with range(start, stop, step) in Python.
+
+    -- Loops don't have to increment, they can decrement as well.
+    -- Python for loop that starts at 100 and decrements by 5 to 0:
+        for i in range(100, -1, -5):
+            print i
+
+    -- Java equivalent:
+        for (int i = 100; i >= 0; i -= 5) {
+            System.out.println(i);
+        }
+
+FOR EACH LOOPS
+    -- Instead of using an iterator (eg. i) to work through a collection (list, etc), you can use a for-each loop.
+    
+    Python:
+        nums = [1, 1, 2, 3, 5, 8, 13, 21]
+        for i in nums:
+            print i
+
+    Java:
+        for ( int i : nums) {
+            System.out.println(i);
+        }
+
+WHILE LOOPS
+    -- Python and Java while loops are very similar.
+    Python:
+        while condition:
+            statement1
+            statement2
+            ...
+
+    Java:
+        while (condition) {
+            statement1
+            statement2
+            ...
+        }
+
+    -- Only differences are the required parenthesis and curly braces, everything else is the same!
+
+DO/WHILE LOOPS
+    -- Do/while loops in Java are very similar to Python.
+    Java:
+        do {
+            statement1
+            statement2
+            ...
+        } while (condition);
+
+    -- Only difference is that the loop is guaranteed to run at least once.
+
+BREAK & CONTINUE
+    -- There are instances where you may want to terminate a loop if a given condition is met.
+    -- In these instances, the BREAK statement comes in handy.
+    -- If you want to loop through an array of integers searching fora  given integer and you want to quit the loop once that number is found, use a break.
+
+    BREAK
+    int[] someInts = {1, 10, 2, 3, 5, 8, 10};
+    for (int oneInt : someInts) {
+        if (oneInt == 10) {
+            System.out.println("Found it!");
+            break;
+        }
+    }
+
+    -- This example will only print 10 ONCE as it will break out of the loop once it finds it. Without the break, we would print 10 TWICE.
+    -- If you have NESTED LOOPS the break will only escape the inner loop, not the outer.
+
+    CONTINUE
+    -- Continue is like break, however, instead of terminating the entire loop, it only terminates the CURRENT iteration.
+
+    for (int oneInt : someInts) {
+        if (oneInt == 10) {
+            System.out.println("Found it!");
+            continue;
+        }
+        System.out.println("Not here.");
+    }
+
+    Without the continue keyword, the loop would print "Found it!" and "Not here" when 10 was present in the array of someInts.
+
+COLLECTIONS
+    -- Just like in Python, Java has collections to store multiple of the same type of object.
+    -- Linear data structures: list, queues, stacks, etc.
+    -- Non-linear data structures: maps, trees, etc.
+
+ARRAYS & ARRAYLISTS
+    -- In Java, Arrays and ArrayLists are both linear data structures used to store data.
+    -- Differences in declaration:
+        Array of ints: int[] nums = new int[5];
+        ArrayList of ints: ArrayList<int> nums = new ArrayList<>();
+
+    -- THINGS TO NOTE:
+        -- Arrays need a pre-determined size known ahead of time, array lists don't.
+        -- ArrayLists can keep growing as you add items to it.
 
 
