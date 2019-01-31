@@ -1,0 +1,85 @@
+CLASS NOTES --
+
+BASICS OF RELATIONAL DATABASES
+-- Relational databases store data in tables and have relationships between them using primary and foreign keys.
+-- All tables must have a primary key!
+-- Foreign keys are usually the primary key of another table.
+
+RELATIONSHIPS
+-- If we wanted to store the type of cheese as well in our cheese table, we could store the different types of cheese in a adifferent table.
+-- New table: CheeseType
+        ID number -- auto-incrmenting (primary key)
+        Type: varchar (text)
+-- Once we have this new table, we need to add a new column to the original Cheese table to store the foreign key to the CheeseType table.
+        CheeseType: number -- foreign key to CheeseType.ID field
+
+USING RELATIONSHIPS WITH JOINS
+-- In order to get all of the information of a cheese object across two tables, we need to JOIN them.
+-- For example if we wanted to select the fields from just the Cheese table, we'd us a SQL select statement like so:
+    SELECT ID, Name, Description FROM cheese WHERE id=7; // This will select the cheese with ID of 7
+-- However, if we wanted to include the cheese type as well, we'd have to use a JOIN statement.
+
+JOINS!
+-- Goal: Select all fields (name, description, cheese type)!
+-- SELECT Cheese.ID, Cheese.Name, Cheese.Description, CheeseType.Type FROM cheese INNER JOIN CheeseType ON Cheese.CheeseType = CheeseType.ID
+-- THis is an example of an INNER JOIN, which will only return values that selects records that have matching values in both tables.
+    -- Note: There are out joins, left and right outer/inner joins and more.
+
+ORM -- OBJECT-RELATIONAL MAPPING
+-- Allows for mapping between code objects and relational database tables
+-- Databases (at least SQL database) store data in tables (with relationships)
+-- Code (like Java) store data in objects
+-- ORMs allow for creating, retrieving, updating and deleteding (aka CRUD) objects to a database
+-- Data layer (or service) between your code and the database
+    -- This code usually has classes/services to perform the CRUD
+
+SAVING (OR CREATING)
+-- Steps:
+    1) Create new object, for example Cheese cheddar = new Cheese(7, "Cheese", "Delcious")
+    2) Call into the dAO (data acces object) to save (or create) the object
+    3) Save to database in DAO which maps the Cheese data fields to the relational database tables
+
+READING
+-- Retrieving is just aas easy with ORMs
+-- You can select by the identifier (in the previous example we used an ID of 7)
+-- Note: Using the primary key is the fastest way to retrieve a row from a database table
+-- The ORM will provide the construction of the the Cheese object
+
+UPDATING
+1) Retrieve cheese object from ORM (database)
+2) Make changes
+3) Call update method in DAO
+4) Profit
+
+DELETEING
+-- Provide an ID (or entire cheese object) and the ORM will delete the row from the database for you!
+
+JPA (JAVA PERSISTENCE API)
+-- The Java Persistence API is a Java specification for accessing, persisting, and managing data between Java objects/classes and a relational database.
+-- Hibernate is the IMPLEMENTATION of the JPA specification that we use in this class (and is widely used in industry as well).
+-- This allows for POJOs (plain old Java objects) to be persesisted (stored) to a database.
+
+SPRING BOOT & JPA
+-- Classes (POJOs) need to be annotated with the @entity annotation at the class level
+-- This allows Spring Boot (and hibernate) to know that this classs is going to be stored in a database (ie. its an entity)
+-- @Id - Declares a variable as the Primary key
+-- @GeneratedValue --
+
+CRUDREPOSITORY
+-- Specifies the CRUD methods
+-- Requires the type (cheese) and the identifier type (Integer)
+-- This provide the typical CURD methods for a provided entity object, in this case Cheese
+
+CDI (CONTEXT AND DEPENDENCY INJECTION)
+-- Context and dependency injection, highly reccommended reading!
+-- Srping uses @Autowired
+-- Javax uses @Inject
+-- CDI allows for an inversion of control to allow the container and framework to create and manage the lifecycle of objects and provide them to us!
+
+DAO USAGE
+-- @Repository -- This interface is a repository of data that is persisted
+-- @Transactional -- All methods should use transactions (either all succeed or rollback and fail)
+-- findAll() -- returns iterable with all objects
+-- save(Object object) -- saves your object
+-- deleteById(interger id) -- deletes an object by identifier.
+
